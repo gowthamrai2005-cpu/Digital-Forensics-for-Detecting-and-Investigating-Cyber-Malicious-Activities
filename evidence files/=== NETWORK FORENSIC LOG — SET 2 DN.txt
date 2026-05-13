@@ -1,0 +1,30 @@
+=== NETWORK FORENSIC LOG — SET 2: DNS Tunneling & Data Exfiltration ===
+[2026-03-13 13:15:00] ALERT: Anomalous DNS query volume — 14,000 queries/hour from workstation WS-045
+[2026-03-13 13:15:45] WARNING: DNS queries contain base64-encoded subdomains: 'aGVsbG8gd29ybGQ=.evil.com'
+[2026-03-13 13:16:30] CRITICAL: DNS tunneling tool 'iodine' process detected on WS-045
+[2026-03-13 13:17:15] ALERT: Outbound DNS to external resolver 8.8.8.8 bypassing internal DNS server
+[2026-03-13 13:18:00] CRITICAL: Data exfiltrated via DNS TXT record responses — 340 MB in 60 minutes
+[2026-03-13 13:18:45] WARNING: Query domains all subdomain of 'data-exfil.malicious-c2.net'
+[2026-03-13 13:19:30] ALERT: TXT record responses contain encrypted payload data from C2 server
+[2026-03-13 13:20:15] CRITICAL: Files identified in DNS tunnel: quarterly_financials.xlsx, strategy_2026.pdf
+[2026-03-13 13:21:00] WARNING: DNS query entropy analysis — Shannon entropy 4.8 (normal: 2.1) — encoded data confirmed
+[2026-03-13 13:21:45] ALERT: 8,400 unique subdomains queried — each containing 63 bytes of exfiltrated data
+[2026-03-13 13:22:30] CRITICAL: DNS tunnel active for estimated 14 days — 4.7 GB total exfiltration estimated
+[2026-03-13 13:23:15] WARNING: C2 domain registered 17 days ago — DGA (Domain Generation Algorithm) pattern
+[2026-03-13 13:24:00] ALERT: Whois data: registrant 'privacy@domainsbyproxy.com' — identity masked
+[2026-03-13 13:24:45] CRITICAL: C2 server IP 203.0.113.100 — geolocated to bulletproof hosting in Belize
+[2026-03-13 13:25:30] WARNING: 3 additional workstations showing similar DNS anomaly: WS-046, WS-047, WS-091
+[2026-03-13 13:26:15] ALERT: DNS sinkhole deployed for 'data-exfil.malicious-c2.net' — tunnel disrupted
+[2026-03-13 13:27:00] CRITICAL: Post-sinkhole — tunneling tool switches to backup domain 'cdn-update.fastnet.pw'
+[2026-03-13 13:27:45] WARNING: Backup domain also sinkholed — attacker moves to HTTPS C2 channel
+[2026-03-13 13:28:30] ALERT: Certificate for 'cdn-update.fastnet.pw' — Let's Encrypt issued 18 days ago
+[2026-03-13 13:29:15] CRITICAL: Network firewall rule added — block all DoH (DNS over HTTPS) to external providers
+[2026-03-13 13:30:00] WARNING: Infected workstations isolated from network pending forensic investigation
+[2026-03-13 13:30:45] ALERT: Memory forensics on WS-045 — malware identified as 'DNScat2' variant
+[2026-03-13 13:31:30] CRITICAL: DNScat2 persistence via scheduled task 'Windows Update Helper' — runs every 10 min
+[2026-03-13 13:32:15] WARNING: Scheduled task hash: SHA256=b4c2d1e3f4a5678901234567abcdef0123456789abcdef0123456789abcdef12
+[2026-03-13 13:33:00] ALERT: Initial compromise vector — malicious macro in 'Invoice_March2026.docm' email attachment
+[2026-03-13 13:33:45] CRITICAL: Email delivered 14 days ago — undetected for 2 weeks — EDR gap identified
+[2026-03-13 13:34:30] WARNING: SIEM correlation rule created — alert on >500 DNS queries/hour per endpoint
+[2026-03-13 13:35:15] ALERT: Threat intel IOCs shared — C2 domains and IPs added to industry blocklist
+[2026-03-13 13:36:00] CRITICAL: CISA notification filed — suspected nation-state exfiltration of trade secrets

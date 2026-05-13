@@ -1,0 +1,30 @@
+=== COMPUTER FORENSIC LOG — SET 1: Ransomware Attack (LockBit 3.0) ===
+[2026-03-10 22:15:05] ALERT: Suspicious PowerShell execution on DESKTOP-HR4421: encoded command detected
+[2026-03-10 22:15:50] CRITICAL: PowerShell decodes and executes LockBit 3.0 dropper from %TEMP%\update.exe
+[2026-03-10 22:16:35] WARNING: UAC bypass via fodhelper.exe — elevated execution without user prompt
+[2026-03-10 22:17:20] ALERT: Windows Defender real-time protection disabled via registry modification
+[2026-03-10 22:18:05] CRITICAL: Shadow volume copies deleted: 'vssadmin delete shadows /all /quiet'
+[2026-03-10 22:18:50] WARNING: Windows backup service (wbengine) stopped and disabled
+[2026-03-10 22:19:35] ALERT: System restore points deleted — recovery options eliminated
+[2026-03-10 22:20:20] CRITICAL: File encryption begins — AES-256 + RSA-2048 hybrid encryption
+[2026-03-10 22:21:05] WARNING: 14,000 files encrypted per minute — .lockbit3 extension appended
+[2026-03-10 22:21:50] ALERT: Network shares enumerated — 8 mapped drives being encrypted simultaneously
+[2026-03-10 22:22:35] CRITICAL: Shared drive \\FILESERVER01\company-docs encrypted — 847,000 files affected
+[2026-03-10 22:23:20] WARNING: Active Directory enumerated — 340 computer objects identified for spread
+[2026-03-10 22:24:05] ALERT: PsExec deployment to 47 workstations using harvested domain admin credentials
+[2026-03-10 22:24:50] CRITICAL: 47 workstations simultaneously encrypting — 2,100 GB data at risk
+[2026-03-10 22:25:35] WARNING: Ransom note 'LockBit_3.0_README.hta' dropped in every encrypted directory
+[2026-03-10 22:26:20] ALERT: Ransom demand: $2.8 million in Monero — 72-hour payment deadline
+[2026-03-10 22:27:05] CRITICAL: Data exfiltration prior to encryption confirmed — 840 GB sent to Mega.nz
+[2026-03-10 22:27:50] WARNING: LockBit leak site lists victim company — double extortion in progress
+[2026-03-10 22:28:35] ALERT: Domain controller DC01 encryption started — Active Directory at risk
+[2026-03-10 22:29:20] CRITICAL: Network isolated — all inter-VLAN routing disabled by emergency ACL
+[2026-03-10 22:30:05] WARNING: 23 unaffected hosts identified and isolated to clean VLAN
+[2026-03-10 22:30:50] ALERT: Initial access vector: RDP brute force on port 3389 from 45.33.32.156 — 14 days ago
+[2026-03-10 22:31:35] CRITICAL: Attacker present in network 14 days before ransomware deployment
+[2026-03-10 22:32:20] WARNING: CobaltStrike beacon found in memory of DC01 — C2 active since day 1
+[2026-03-10 22:33:05] ALERT: Cyber insurance carrier notified — incident response retainer invoked
+[2026-03-10 22:33:50] CRITICAL: FBI notified — LockBit 3.0 decryption keys potentially available via Operation Cronos
+[2026-03-10 22:34:35] WARNING: Backup tapes verified clean — 48-hour RPO confirmed
+[2026-03-10 22:35:20] ALERT: Recovery plan initiated — estimated 3 weeks to full restoration
+[2026-03-10 22:36:05] CRITICAL: Total business impact estimate: $14.7 million including downtime and recovery

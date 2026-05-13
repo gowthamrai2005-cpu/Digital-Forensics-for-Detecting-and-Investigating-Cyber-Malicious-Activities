@@ -1,0 +1,27 @@
+=== NETWORK FORENSIC LOG — SET 4: EternalBlue Exploit / SMB Attack ===
+[2026-03-19 03:22:00] ALERT: Port scan from 185.220.101.34 — TCP SYN to port 445 on all 254 hosts in 10.0.1.0/24
+[2026-03-19 03:22:45] WARNING: Nmap fingerprint detected — OS detection and version scanning active
+[2026-03-19 03:23:30] ALERT: 14 hosts identified with SMBv1 enabled — EternalBlue vulnerable systems
+[2026-03-19 03:24:15] CRITICAL: EternalBlue exploit attempt (CVE-2017-0144) against 10.0.1.22 — SMB buffer overflow
+[2026-03-19 03:25:00] CRITICAL: Exploit successful — SYSTEM-level shell obtained on 10.0.1.22 (unpatched Win7)
+[2026-03-19 03:25:45] ALERT: DoublePulsar backdoor kernel implant installed on 10.0.1.22
+[2026-03-19 03:26:30] CRITICAL: Shellcode executed — Meterpreter reverse shell to 185.220.101.34:4444
+[2026-03-19 03:27:15] WARNING: Credential dumping — lsass.exe accessed by exploit process on 10.0.1.22
+[2026-03-19 03:28:00] ALERT: 12 plaintext passwords extracted from LSASS memory via Mimikatz
+[2026-03-19 03:28:45] CRITICAL: Domain admin credentials found: 'corp\da_backup' — lateral movement imminent
+[2026-03-19 03:29:30] WARNING: PsExec used to execute payload on 10.0.1.5, 10.0.1.8, 10.0.1.15, 10.0.1.33
+[2026-03-19 03:30:15] ALERT: EternalBlue self-propagation — compromised hosts scanning for more SMBv1 targets
+[2026-03-19 03:31:00] CRITICAL: Ransomware binary 'WannaCry_v3.exe' dropped on 10.0.1.22 — encryption started
+[2026-03-19 03:31:45] WARNING: File extension change .docx → .WCRY detected on shared drive \\10.0.1.5\share
+[2026-03-19 03:32:30] ALERT: 14,000 files encrypted in 45 seconds — shadow copies deleted via vssadmin
+[2026-03-19 03:33:15] CRITICAL: Ransom note '@Please_Read_Me@.txt' dropped in 847 directories
+[2026-03-19 03:34:00] WARNING: Kill-switch domain 'iuqerfsodp9ifjaposdfjhgosurijfaewrwergwea.com' not queried — patched variant
+[2026-03-19 03:34:45] ALERT: Bitcoin wallet address in ransom note: 1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2 — 0.5 BTC demanded
+[2026-03-19 03:35:30] CRITICAL: 6 additional hosts encrypted — total affected: 10 hosts, 84,000 files
+[2026-03-19 03:36:15] WARNING: Network segmentation enforced — affected VLAN isolated from rest of network
+[2026-03-19 03:37:00] ALERT: SMBv1 disabled on all remaining hosts via GPO emergency push
+[2026-03-19 03:37:45] CRITICAL: MS17-010 patch deployed to all 254 hosts — 18 hours to full patch cycle
+[2026-03-19 03:38:30] WARNING: Backups verified — last clean backup 6 hours before attack — 4% data loss
+[2026-03-19 03:39:15] ALERT: Recovery initiated from backup — estimated 14 hours to full restoration
+[2026-03-19 03:40:00] CRITICAL: FBI Cyber Division notified — ransomware incident report IC3 filed
+[2026-03-19 03:40:45] WARNING: Forensic images of all 10 encrypted hosts preserved before restoration

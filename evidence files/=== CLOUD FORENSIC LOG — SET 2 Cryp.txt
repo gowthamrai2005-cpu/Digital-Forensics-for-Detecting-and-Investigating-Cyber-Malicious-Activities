@@ -1,0 +1,32 @@
+=== CLOUD FORENSIC LOG — SET 2: Cryptomining via Compromised VM ===
+[2026-03-14 11:05:00] WARNING: Unusual CPU spike detected — EC2 instance i-0ff2341a at 98% utilization
+[2026-03-14 11:05:45] ALERT: Unknown process 'xmrig' spawned on instance i-0ff2341a
+[2026-03-14 11:06:30] CRITICAL: Outbound connection to known mining pool stratum+tcp://pool.minexmr.com:4444
+[2026-03-14 11:07:15] ALERT: New cron job added: '*/5 * * * * /tmp/.x/xmrig --config /tmp/.x/config.json'
+[2026-03-14 11:08:00] WARNING: /tmp/.x/ directory created — contains hidden binaries xmrig, watchdog.sh
+[2026-03-14 11:08:45] CRITICAL: Watchdog process 'watchdog.sh' detected — restarts miner if killed
+[2026-03-14 11:09:30] ALERT: SSH brute force originating from i-0ff2341a targeting 10.0.0.0/16 subnet
+[2026-03-14 11:10:15] WARNING: Memory usage anomaly — 14 GB of 16 GB consumed by unknown processes
+[2026-03-14 11:11:00] ALERT: Lateral movement — SSH key from i-0ff2341a used to access i-0ab5678c
+[2026-03-14 11:11:45] CRITICAL: Miner deployed on second instance i-0ab5678c — identical xmrig binary
+[2026-03-14 11:12:30] WARNING: Network egress from VPC increased by 840% in last 30 minutes
+[2026-03-14 11:13:15] ALERT: IAM metadata service queried from i-0ff2341a — credential theft attempt
+[2026-03-14 11:14:00] CRITICAL: Temporary IAM credentials stolen and used from external IP 104.21.45.67
+[2026-03-14 11:14:45] ALERT: S3 ListBuckets called using stolen credentials from 104.21.45.67
+[2026-03-14 11:15:30] WARNING: AWS monthly bill projected at $47,000 — 1,100% above baseline
+[2026-03-14 11:16:15] ALERT: 6 new EC2 GPU instances (p3.8xlarge) launched in us-east-1 and eu-west-1
+[2026-03-14 11:17:00] CRITICAL: Stolen credentials used to disable billing alerts and cost anomaly detection
+[2026-03-14 11:17:45] ALERT: Security group rule added — allow all outbound on port 3333, 4444, 14444
+[2026-03-14 11:18:30] WARNING: CloudWatch agent stopped on all 8 infected instances
+[2026-03-14 11:19:15] ALERT: /etc/passwd modified — new user 'xmr_user' added with sudo privileges
+[2026-03-14 11:20:00] CRITICAL: Persistence mechanism found — systemd service 'network-helper.service' drops miner on reboot
+[2026-03-14 11:20:45] WARNING: DNS queries to xmr.crypto-pool.fr at rate of 1 per second from all instances
+[2026-03-14 11:21:30] ALERT: 3 additional regions compromised — ap-southeast-1, ap-northeast-1, sa-east-1
+[2026-03-14 11:22:15] CRITICAL: Total 14 EC2 instances running unauthorized cryptominer — incident escalated
+[2026-03-14 11:23:00] WARNING: Estimated crypto mined: 0.84 XMR (~$140) — attacker profiting
+[2026-03-14 11:23:45] ALERT: Miner binary hash: SHA256=a3f1c2d4e5b6789012345678abcdef0123456789abcdef0123456789abcdef01
+[2026-03-14 11:24:30] CRITICAL: All affected instances isolated — VPC network ACL updated to block egress
+[2026-03-14 11:25:15] WARNING: Forensic memory dumps initiated for instances i-0ff2341a and i-0ab5678c
+[2026-03-14 11:26:00] ALERT: CloudTrail logs preserved — investigation case CASE_CLOUD_002 opened
+[2026-03-14 11:26:45] CRITICAL: Root cause identified — publicly exposed Docker API port 2375 on i-0ff2341a
+

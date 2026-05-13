@@ -1,0 +1,30 @@
+=== CLOUD FORENSIC LOG — SET 4: Kubernetes Container Escape ===
+[2026-03-22 09:00:15] ALERT: Pod 'web-frontend-7d9f8' in namespace 'production' spawned unexpected shell process
+[2026-03-22 09:01:00] CRITICAL: Container escape attempt — /proc/1/root accessed from within container
+[2026-03-22 09:01:45] ALERT: Privileged container detected — SecurityContext.privileged=true on pod 'web-frontend-7d9f8'
+[2026-03-22 09:02:30] CRITICAL: Host filesystem mounted inside container at /host — full node access achieved
+[2026-03-22 09:03:15] WARNING: /host/etc/kubernetes/admin.conf read by container process — cluster admin kubeconfig stolen
+[2026-03-22 09:04:00] ALERT: kubectl commands executed from compromised container using stolen kubeconfig
+[2026-03-22 09:04:45] CRITICAL: New cluster-admin ClusterRoleBinding created for ServiceAccount 'attacker-sa'
+[2026-03-22 09:05:30] WARNING: All pod specs enumerated across 14 namespaces — secrets listed
+[2026-03-22 09:06:15] ALERT: 47 Kubernetes secrets extracted — includes database passwords and API tokens
+[2026-03-22 09:07:00] CRITICAL: DaemonSet 'malicious-ds' deployed — runs malicious pod on every node (23 nodes)
+[2026-03-22 09:07:45] WARNING: Node shell achieved on worker-node-04 via DaemonSet hostPID=true exploit
+[2026-03-22 09:08:30] ALERT: /etc/shadow read on worker-node-04 — OS-level credential harvesting
+[2026-03-22 09:09:15] CRITICAL: Cryptominer deployed via DaemonSet on all 23 cluster nodes
+[2026-03-22 09:10:00] WARNING: Kubernetes audit logs show 340 unauthorized API calls in last 10 minutes
+[2026-03-22 09:10:45] ALERT: etcd database backup initiated by attacker — full cluster state being exfiltrated
+[2026-03-22 09:11:30] CRITICAL: etcd backup (2.3 GB) transferred to external server 104.244.42.66
+[2026-03-22 09:12:15] WARNING: Production database connection string found in etcd — immediate rotation required
+[2026-03-22 09:13:00] ALERT: Attacker deleted all Falco security alerts in monitoring namespace
+[2026-03-22 09:13:45] CRITICAL: 6 production namespaces deleted — services down for 12,000 users
+[2026-03-22 09:14:30] WARNING: PersistentVolume data for 'postgres-pv-001' at risk — backup verified
+[2026-03-22 09:15:15] ALERT: Network policy disabled — all pod-to-pod communication now unrestricted
+[2026-03-22 09:16:00] CRITICAL: Service mesh mTLS certificates extracted — MITM within cluster possible
+[2026-03-22 09:16:45] WARNING: Incident response — cluster isolated from internet — ingress controller disabled
+[2026-03-22 09:17:30] ALERT: All nodes cordoned — no new pod scheduling permitted during investigation
+[2026-03-22 09:18:15] CRITICAL: Forensic node snapshots initiated for all 23 affected worker nodes
+[2026-03-22 09:19:00] WARNING: Vulnerability identified — CVE-2022-0185 kernel exploit used for initial escape
+[2026-03-22 09:19:45] ALERT: Patch status: 18 of 23 nodes unpatched for CVE-2022-0185 — emergency patching started
+[2026-03-22 09:20:30] CRITICAL: Full incident report filed — estimated business impact $2.1M downtime cost
+

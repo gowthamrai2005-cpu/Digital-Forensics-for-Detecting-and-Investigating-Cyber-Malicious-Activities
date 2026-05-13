@@ -1,0 +1,11 @@
+This module generates a synthetic forensic dataset by simulating investigation procedures, evidence collection, malware examination, 
+and exporting structured results for evaluation and visualization. It does not perform machine learning prediction.
+
+
+Many examiners ask:
+
+“Where did you get your dataset?”
+
+Your answer:
+
+“We generated a controlled synthetic dataset using a forensic simulation model to ensure repeatability and integrity.”

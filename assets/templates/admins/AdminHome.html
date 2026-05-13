@@ -1,0 +1,470 @@
+{% extends 'admins/adminbase.html'%}
+{%load static%}
+{% block contents %}
+<style>
+    :root {
+        --primary-color: #0056b3;
+        --secondary-color: #004085;
+        --light-bg: #f4f7f6;
+        --dark-text: #333;
+        --light-text: #fff;
+        --accent-color: #28a745;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .main-container {
+        display: flex;
+        height: calc(100vh - 200px);
+        overflow: hidden;
+    }
+
+    .sidebar {
+        width: 250px;
+        background-color: var(--light-text);
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        padding: 1.5em;
+        overflow-y: auto;
+    }
+
+    .sidebar h3 {
+        color: var(--primary-color);
+        margin-bottom: 1em;
+        font-size: 1.3em;
+    }
+
+    .sidebar-menu {
+        list-style: none;
+    }
+
+    .sidebar-menu li {
+        margin-bottom: 0.5em;
+    }
+
+    .sidebar-menu li a {
+        display: flex;
+        align-items: center;
+        padding: 0.8em;
+        color: var(--dark-text);
+        text-decoration: none;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+
+    .sidebar-menu li a:hover,
+    .sidebar-menu li a.active {
+        background-color: var(--primary-color);
+        color: var(--light-text);
+    }
+
+    .sidebar-menu li a::before {
+        content: '▸';
+        margin-right: 10px;
+        font-weight: bold;
+    }
+
+    .content-area {
+        flex: 1;
+        overflow-y: auto;
+        padding: 2em;
+        background-color: var(--light-bg);
+    }
+
+    .dashboard-header {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: var(--light-text);
+        padding: 2em;
+        border-radius: 8px;
+        margin-bottom: 2em;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .dashboard-header h2 {
+        font-size: 2em;
+        margin-bottom: 0.5em;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1em;
+        margin-bottom: 2em;
+    }
+
+    .stat-card {
+        background-color: var(--light-text);
+        padding: 1.5em;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .stat-card .number {
+        font-size: 2.5em;
+        font-weight: bold;
+        margin-bottom: 0.3em;
+    }
+
+    .stat-card .label {
+        color: #666;
+        font-size: 0.9em;
+    }
+
+    .stat-card.red .number { color: #dc3545; }
+    .stat-card.orange .number { color: #fd7e14; }
+    .stat-card.purple .number { color: #6f42c1; }
+    .stat-card.blue .number { color: #0056b3; }
+    .stat-card.pink .number { color: #e83e8c; }
+
+    .content-section {
+        background-color: var(--light-text);
+        padding: 2em;
+        margin-bottom: 1.5em;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        display: none;
+    }
+
+    .content-section.active {
+        display: block;
+    }
+
+    .content-section h3 {
+        color: var(--primary-color);
+        font-size: 1.8em;
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 0.5em;
+        margin-bottom: 1em;
+    }
+
+    .highlight {
+        font-weight: bold;
+        color: var(--secondary-color);
+    }
+
+    .data-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5em;
+        margin-top: 1.5em;
+    }
+
+    .data-item {
+        background-color: #f8f9fa;
+        padding: 1.5em;
+        border-radius: 8px;
+        border-left: 4px solid var(--accent-color);
+    }
+
+    .data-item .value {
+        font-size: 1.8em;
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 0.3em;
+    }
+
+    .data-item .description {
+        color: #666;
+        font-size: 0.95em;
+    }
+
+    .progress-bar {
+        background-color: #e9ecef;
+        height: 25px;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-top: 0.5em;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent-color), #20c997);
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 10px;
+        color: var(--light-text);
+        font-weight: bold;
+        font-size: 0.85em;
+        transition: width 1s ease;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 1em;
+        margin-top: 1em;
+    }
+
+    .btn {
+        padding: 0.8em 2em;
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .btn-primary {
+        background-color: var(--accent-color);
+        color: var(--light-text);
+    }
+
+    .btn-primary:hover {
+        background-color: #218838;
+    }
+
+    .btn-secondary {
+        background-color: var(--primary-color);
+        color: var(--light-text);
+    }
+
+    .btn-secondary:hover {
+        background-color: var(--secondary-color);
+    }
+
+    @media (max-width: 1200px) {
+        .stats-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .main-container {
+            flex-direction: column;
+            height: auto;
+        }
+        
+        .sidebar {
+            width: 100%;
+            padding: 1em;
+        }
+
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .data-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="main-container">
+    <aside class="sidebar">
+        <h3>Navigation</h3>
+        <ul class="sidebar-menu">
+            <li><a href="#overview" class="menu-link active" data-section="overview">Overview</a></li>
+            <li><a href="#attacks" class="menu-link" data-section="attacks">Attack Vectors</a></li>
+            <li><a href="#evidence" class="menu-link" data-section="evidence">Evidence Collection</a></li>
+            <li><a href="#tools" class="menu-link" data-section="tools">Forensic Tools</a></li>
+            <li><a href="#legal" class="menu-link" data-section="legal">Legal & Ethical</a></li>
+        </ul>
+    </aside>
+
+    <main class="content-area">
+        <!-- Overview Section -->
+        <section id="overview" class="content-section active">
+            <div class="dashboard-header">
+                <h1>Digital Forensics Investigation Report</h1>
+                <p>This comprehensive dashboard details the <span style="color: #ffc107;">kind and frequency of harassment</span> digital forensic specialists endure, highlighting various attack vectors and the crucial role of digital evidence and forensic tools.</p>
+                <div class="action-buttons">
+                    <a href="{% url 'RegisterUsersView' %}" class="btn btn-primary">View Users</a>
+                    <a href="{% url 'index' %}" class="btn btn-secondary">Logout</a>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card red">
+                    <div class="number">45</div>
+                    <div class="label">Malware Attacks</div>
+                </div>
+                <div class="stat-card orange">
+                    <div class="number">30</div>
+                    <div class="label">Phishing Attacks</div>
+                </div>
+                <div class="stat-card purple">
+                    <div class="number">22</div>
+                    <div class="label">Data Breaches</div>
+                </div>
+                <div class="stat-card blue">
+                    <div class="number">15</div>
+                    <div class="label">Cyber Espionage</div>
+                </div>
+                <div class="stat-card pink">
+                    <div class="number">18</div>
+                    <div class="label">Identity Theft</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Attack Vectors Section -->
+        <section id="attacks" class="content-section">
+            <h3>Identified Attack Vectors</h3>
+            <p>Malware dominated analysis with <span class="highlight">45 attacks</span>. We found <span class="highlight">30 phishing attacks</span>. There were <span class="highlight">22 data breaches</span>, <span class="highlight">15 cyber espionage</span>, and <span class="highlight">18 identity theft</span> incidents.</p>
+            
+            <div class="data-grid">
+                <div class="data-item">
+                    <div class="value">45</div>
+                    <div class="description">Malware Attacks</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%;">90%</div>
+                    </div>
+                </div>
+                <div class="data-item">
+                    <div class="value">30</div>
+                    <div class="description">Phishing Attacks</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%;">60%</div>
+                    </div>
+                </div>
+                <div class="data-item">
+                    <div class="value">22</div>
+                    <div class="description">Data Breaches</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 44%;">44%</div>
+                    </div>
+                </div>
+                <div class="data-item">
+                    <div class="value">15</div>
+                    <div class="description">Cyber Espionage</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 30%;">30%</div>
+                    </div>
+                </div>
+                <div class="data-item">
+                    <div class="value">18</div>
+                    <div class="description">Identity Theft</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 36%;">36%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Evidence Collection Section -->
+        <section id="evidence" class="content-section">
+            <h3>Digital Evidence Collection</h3>
+            <p>Digital evidence was crucial to the case. <span class="highlight">65 pieces of evidence</span> were collected on computers. <span class="highlight">42 incidents</span> showed smartphones and tablets' digital investigative potential. There were <span class="highlight">55 examples</span> of communication patterns requiring network logs.</p>
+            
+            <div class="data-grid">
+                <div class="data-item">
+                    <div class="value">💻 65</div>
+                    <div class="description">Computer Evidence</div>
+                </div>
+                <div class="data-item">
+                    <div class="value">📱 42</div>
+                    <div class="description">Smartphone/Tablet Evidence</div>
+                </div>
+                <div class="data-item">
+                    <div class="value">🌐 55</div>
+                    <div class="description">Network Logs (Communication Patterns)</div>
+                </div>
+                <div class="data-item">
+                    <div class="value">☁️ 28</div>
+                    <div class="description">Cloud Services Evidence</div>
+                </div>
+                <div class="data-item">
+                    <div class="value">💾 12</div>
+                    <div class="description">Removable Media Evidence</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forensic Tools Section -->
+        <section id="tools" class="content-section">
+            <h3>Digital Forensic Tools and Techniques</h3>
+            <p>Digital forensics were essential to the inquiry. In <span class="highlight">70% of cases</span>, disk imaging software created forensic copies of metadata- and timestamp-containing storage media. Network packet analyzers examined <span class="highlight">48 traffic logs</span> and communication patterns.</p>
+            
+            <div class="data-grid">
+                <div class="data-item">
+                    <div class="value">70%</div>
+                    <div class="description">Disk Imaging Software</div>
+                </div>
+                <div class="data-item">
+                    <div class="value">48</div>
+                    <div class="description">Network Packet Analyzers (Traffic Logs)</div>
+                </div>
+                <div class="data-item">
+                    <div class="value">35</div>
+                    <div class="description">Memory Forensics Cases</div>
+                </div>
+                <div class="data-item">
+                    <div class="value">25</div>
+                    <div class="description">Malware Analysis Platforms</div>
+                </div>
+                <div class="data-item">
+                    <div class="value">60</div>
+                    <div class="description">File Recovery Software Uses</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legal & Ethical Section -->
+        <section id="legal" class="content-section">
+            <h3>Legal and Ethical Considerations</h3>
+            <p>Legal and ethical considerations dominated the study. The law was important, and all inquiries followed norms. A strong <span class="highlight">chain of custody</span> protects evidence integrity and admissibility. The <span class="highlight">data privacy rules</span> were respected.</p>
+            
+            <div class="data-grid">
+                <div class="data-item">
+                    <div class="value">🔗</div>
+                    <div class="description"><strong>Chain of Custody:</strong> Strong protocols protect evidence integrity and admissibility in court</div>
+                </div>
+                <div class="data-item">
+                    <div class="value">🔒</div>
+                    <div class="description"><strong>Data Privacy Rules:</strong> All investigations comply with data privacy regulations and protection laws</div>
+                </div>
+                <div class="data-item">
+                    <div class="value">⚖️</div>
+                    <div class="description"><strong>Legal Admissibility:</strong> Evidence collected meets legal standards for court presentation</div>
+                </div>
+                <div class="data-item">
+                    <div class="value">✓</div>
+                    <div class="description"><strong>Ethical Standards:</strong> Objective investigations ensure fairness and professional integrity</div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Handle sidebar navigation
+        const menuLinks = document.querySelectorAll('.menu-link');
+        const sections = document.querySelectorAll('.content-section');
+        
+        menuLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                menuLinks.forEach(l => l.classList.remove('active'));
+                
+                // Add active class to clicked link
+                link.classList.add('active');
+                
+                // Hide all sections
+                sections.forEach(section => section.classList.remove('active'));
+                
+                // Show selected section
+                const sectionId = link.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+    });
+</script>
+
+{% endblock %}

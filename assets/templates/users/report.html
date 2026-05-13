@@ -1,0 +1,116 @@
+{% extends 'users/userbase.html' %}
+{% load static %}
+{% block contents %}
+
+<div class="container">
+    <section id="introduction">
+        <h1>Enhanced Digital Forensics Investigation Summary</h1>
+
+        <div class="section">
+            <h2>Case Summary</h2>
+            <ul>
+                <li><strong>Case ID:</strong> {{ stats.case_id }}</li>
+                <li><strong>Total Evidence:</strong> {{ stats.total_evidence }}</li>
+                <li><strong>Total Analysis Results:</strong> {{ stats.total_analysis_results }}</li>
+                <li><strong>Total Malware Samples:</strong> {{ stats.total_malware_samples }}</li>
+                <li><strong>Tools Used:</strong> {{ stats.tools_used|join:", " }}</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Evidence by Type</h2>
+            <ul>
+                {% for evtype, count in stats.evidence_by_type.items %}
+                    <li>{{ evtype|title }}: {{ count }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Malware Statistics</h2>
+            <ul>
+                {% for key, value in stats.malicious_activities.items %}
+                    <li><strong>{{ key|title }}:</strong> {{ value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Investigation Metrics</h2>
+            <ul>
+                {% for key, value in stats.investigation_metrics.items %}
+                    <li>{{ key|title }}: {{ value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Full JSON Report</h2>
+            <!-- Embed JSON securely -->
+            {{ stats|json_script:"investigationStats" }}
+
+            <!-- Display formatted JSON -->
+            <pre id="json-display">Loading JSON...</pre>
+
+            <script>
+                const data = JSON.parse(document.getElementById("investigationStats").textContent);
+                document.getElementById("json-display").textContent = JSON.stringify(data, null, 2);
+            </script>
+        </div>
+
+        <!-- JSON Description Section -->
+        <div class="section">
+            <h2>Understanding the Investigation JSON Report</h2>
+            <p>The JSON report represents structured digital forensics data collected and analyzed during the investigation. Each field provides insight into evidence, malware behavior, and investigation metrics used for decision-making.</p>
+
+            <div class="data-grid">
+                <div class="data-item">
+                    <h4>Case ID</h4>
+                    <p>A unique identifier assigned to this investigation. Helps track and reference the case across reports and systems.</p>
+                </div>
+
+                <div class="data-item">
+                    <h4>Total Evidence</h4>
+                    <p>Total number of digital artifacts collected, such as logs, files, network traces, and system images.</p>
+                </div>
+
+                <div class="data-item">
+                    <h4>Analysis Results</h4>
+                    <p>Number of completed forensic analyses, including malware scans, behavioral analysis, and threat classification.</p>
+                </div>
+
+                <div class="data-item">
+                    <h4>Malware Samples</h4>
+                    <p>Count of malicious software samples detected during the investigation, used to understand attack patterns and severity.</p>
+                </div>
+
+                <div class="data-item">
+                    <h4>Evidence by Type</h4>
+                    <p>Categorization of evidence based on type, such as network logs, system files, emails, or memory dumps.</p>
+                </div>
+
+                <div class="data-item">
+                    <h4>Malicious Activities</h4>
+                    <p>Displays detected cyber threats including phishing, data breaches, malware attacks, and identity theft incidents.</p>
+                </div>
+
+                <div class="data-item">
+                    <h4>Investigation Metrics</h4>
+                    <p>Key performance indicators like investigation duration, severity, and confidence score, evaluating investigation effectiveness.</p>
+                </div>
+
+                <div class="data-item">
+                    <h4>Tools Used</h4>
+                    <p>Lists forensic and cybersecurity tools applied during the investigation (malware scanners, network analyzers, etc.).</p>
+                </div>
+            </div>
+
+            <p style="margin-top:20px; font-style:italic;">
+                This structured JSON ensures consistency, automation readiness, and easy integration with AI-based threat analysis systems.
+            </p>
+        </div>
+
+    </section>
+</div>
+
+{% endblock %}

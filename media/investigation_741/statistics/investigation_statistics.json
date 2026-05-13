@@ -1,0 +1,48 @@
+{
+  "case_id": "741",
+  "total_evidence": 1,
+  "total_analysis_results": 1,
+  "total_malware_samples": 5,
+  "evidence_by_type": {
+    "computer": 1
+  },
+  "malicious_activities": {
+    "Worm": 1,
+    "Ransomware": 1,
+    "Adware": 1,
+    "Cryptominer": 1,
+    "RAT": 1
+  },
+  "tools_used": [
+    "EnCase",
+    "Wireshark",
+    "FTK Imager",
+    "Autopsy",
+    "Volatility"
+  ],
+  "analysis_timeline": {
+    "2026-04-30": 1
+  },
+  "malware_statistics": {
+    "total_samples": 5,
+    "threat_types": {
+      "Worm": 1,
+      "Ransomware": 1,
+      "Adware": 1,
+      "Cryptominer": 1,
+      "RAT": 1
+    },
+    "file_types": {
+      "Unknown": 5
+    },
+    "avg_file_size": 305.8,
+    "avg_entropy": 5.198598756221267,
+    "total_iocs": 14
+  },
+  "investigation_metrics": {
+    "duration_days": 0,
+    "evidence_per_day": 1.0,
+    "analysis_per_day": 1.0,
+    "team_size": 3
+  }
+}

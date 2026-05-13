@@ -1,0 +1,31 @@
+=== CLOUD FORENSIC LOG — SET 5: Serverless Lambda Function Abuse ===
+[2026-03-25 16:00:10] ALERT: Lambda function 'process-payments' invoked 14,000 times in 5 minutes — rate anomaly
+[2026-03-25 16:00:55] CRITICAL: Environment variable AWS_SECRET_ACCESS_KEY logged in CloudWatch by modified function
+[2026-03-25 16:01:40] WARNING: Lambda function code modified 2 hours ago by IAM user 'contractor_mike'
+[2026-03-25 16:02:25] ALERT: Injected code performs os.system() calls — arbitrary command execution confirmed
+[2026-03-25 16:03:10] CRITICAL: Lambda execution role has overly permissive s3:* and iam:* permissions
+[2026-03-25 16:03:55] WARNING: 8,400 fraudulent payment records created via Lambda injection in RDS database
+[2026-03-25 16:04:40] ALERT: Outbound HTTP POST to 45.33.32.156 from Lambda — data exfiltration via function
+[2026-03-25 16:05:25] CRITICAL: Customer PII (name, card number, CVV) included in exfiltrated Lambda payload
+[2026-03-25 16:06:10] WARNING: Lambda concurrency limit reached — legitimate payment processing blocked
+[2026-03-25 16:06:55] ALERT: API Gateway logs show requests originating from 12 different Tor exit nodes
+[2026-03-25 16:07:40] CRITICAL: Lambda function deployed in 4 additional regions by attacker to evade detection
+[2026-03-25 16:08:25] WARNING: X-Ray tracing disabled on all affected Lambda functions
+[2026-03-25 16:09:10] ALERT: DynamoDB table 'user-sessions' scanned entirely — 2.1M session tokens exposed
+[2026-03-25 16:09:55] CRITICAL: Stolen session tokens used to authenticate as 340 premium users
+[2026-03-25 16:10:40] WARNING: SES service abused via Lambda — 50,000 phishing emails sent using corporate domain
+[2026-03-25 16:11:25] ALERT: SPF/DKIM checks passed for phishing emails — sent from legitimate AWS SES
+[2026-03-25 16:12:10] CRITICAL: 'contractor_mike' account reviewed — found to be phished 3 days prior
+[2026-03-25 16:12:55] WARNING: 'contractor_mike' had no MFA — single factor compromise enabled full access
+[2026-03-25 16:13:40] ALERT: Lambda function rolled back to previous version — malicious code removed
+[2026-03-25 16:14:25] CRITICAL: All Lambda environment variables rotated — old credentials invalidated
+[2026-03-25 16:15:10] WARNING: SES sending suspended — abuse report filed with AWS Trust and Safety
+[2026-03-25 16:15:55] ALERT: 8,400 fraudulent payment records flagged for reversal — finance team notified
+[2026-03-25 16:16:40] CRITICAL: PCI-DSS breach notification initiated — card brands notified within 24 hours
+[2026-03-25 16:17:25] WARNING: Lambda least-privilege remediation started — 47 overpermissive roles identified
+[2026-03-25 16:18:10] ALERT: Forensic Lambda execution logs preserved in isolated S3 bucket
+[2026-03-25 16:18:55] CRITICAL: Total financial fraud exposure: $847,000 — legal hold on all related accounts
+[2026-03-25 16:19:40] WARNING: MFA enforcement policy activated for all IAM users — effective immediately
+[2026-03-25 16:20:25] ALERT: Threat intelligence shared with FS-ISAC — IOCs distributed to member organizations
+
+

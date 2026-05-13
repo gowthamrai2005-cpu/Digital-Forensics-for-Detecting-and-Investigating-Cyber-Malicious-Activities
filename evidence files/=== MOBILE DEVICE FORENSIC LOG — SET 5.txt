@@ -1,0 +1,27 @@
+=== MOBILE DEVICE FORENSIC LOG — SET 5: SMS Phishing (Smishing) Campaign ===
+[2026-03-22 10:00:05] ALERT: 14,000 smishing SMS messages sent using compromised SMS gateway API key
+[2026-03-22 10:00:50] WARNING: Message text: 'USPS: Your package is held. Verify delivery: https://usps-delivery.net/track'
+[2026-03-22 10:01:35] ALERT: Domain 'usps-delivery.net' registered 2 days ago — typosquat of usps.com
+[2026-03-22 10:02:20] CRITICAL: 1,847 victims clicked link within first hour — 13% click-through rate
+[2026-03-22 10:03:05] WARNING: Phishing page collects: full name, address, credit card, CVV, expiration date
+[2026-03-22 10:03:50] ALERT: 847 complete credit card records submitted on phishing page
+[2026-03-22 10:04:35] CRITICAL: Card data exfiltrated in real-time to Telegram bot @carding_data_bot
+[2026-03-22 10:05:20] WARNING: Telegram bot ID obtained — 14,200 cards stored across 6 weeks of campaigns
+[2026-03-22 10:06:05] ALERT: Phishing kit also installs Android malware via fake 'USPS Tracking App' download
+[2026-03-22 10:06:50] CRITICAL: 340 victims installed malicious APK — devices compromised with FluBot malware
+[2026-03-22 10:07:35] WARNING: FluBot malware harvests contact list and sends smishing to all contacts
+[2026-03-22 10:08:20] ALERT: Exponential spread — each infected device sends 200+ smishing messages
+[2026-03-22 10:09:05] CRITICAL: 840 infected devices sending messages — campaign self-propagating
+[2026-03-22 10:09:50] WARNING: SMS gateway provider Twilio notified — API key revoked
+[2026-03-22 10:10:35] ALERT: Attackers switch to 5 additional compromised SMS API accounts
+[2026-03-22 10:11:20] CRITICAL: Total smishing volume in 24 hours: 2.1 million messages sent
+[2026-03-22 10:12:05] WARNING: GSMA anti-fraud team engaged — carrier-level SMS filtering deployed
+[2026-03-22 10:12:50] ALERT: Phishing domain 'usps-delivery.net' sinkholed by CISA at DNS level
+[2026-03-22 10:13:35] CRITICAL: Attackers pivot to 8 new domains — all registered through anonymous registrar
+[2026-03-22 10:14:20] WARNING: USPS brand abuse team files UDRP complaint for domain seizures
+[2026-03-22 10:15:05] ALERT: Google Safe Browsing updated — Chrome blocks all 9 phishing domains
+[2026-03-22 10:15:50] CRITICAL: 847 compromised card numbers shared with Visa/MC fraud prevention — cards blocked
+[2026-03-22 10:16:35] WARNING: FTC complaint portal flooded — 14,000 consumer complaints filed
+[2026-03-22 10:17:20] ALERT: Europol operation seizes C2 infrastructure — 4 suspects identified in Eastern Europe
+[2026-03-22 10:18:05] CRITICAL: Telegram account linked to @carding_data_bot subpoenaed — 41 members identified
+[2026-03-22 10:18:50] WARNING: INTERPOL Red Notice issued for 3 of 4 identified suspects

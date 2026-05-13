@@ -1,0 +1,150 @@
+{% extends 'admins/adminbase.html' %}
+{% block contents %}
+
+<div class="container">
+
+    <section>
+        <h2>Registered Users</h2>
+
+        <div style="overflow-x:auto;">
+            <table class="users-table">
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Name</th>
+                        <th>Login ID</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                        <th>Locality</th>
+                        <th>Last Login</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                {% for i in data %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.loginid }}</td>
+                        <td>{{ i.mobile }}</td>
+                        <td>{{ i.email }}</td>
+                        <td>{{ i.locality }}</td>
+                        <td>
+                            {% if i.last_login %}
+                                {{ i.last_login|date:"d M Y, h:i A" }}
+                            {% else %}
+                                <span style="color:#999;">Never</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if i.status == 'waiting' %}
+                                <span class="status waiting">Waiting</span>
+                            {% else %}
+                                <span class="status active">Active</span>
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            {% if i.status == 'waiting' %}
+                                <a href="/ActivaUsers/?uid={{ i.id }}" class="btn activate">Activate</a>
+                            {% else %}
+                                <span class="activated-text">Activated</span>
+                                <a href="/DeleteUsers/?uid={{ i.id }}" class="btn delete">Delete</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+</div>
+
+<style>
+/* Table styling matching admin theme */
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+    font-size: 0.95em;
+}
+
+.users-table th {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 12px;
+    text-align: center;
+}
+
+.users-table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.users-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.users-table tr:hover {
+    background-color: #eef3f7;
+}
+
+/* Status badges */
+.status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+.status.waiting {
+    background-color: #ffc107;
+    color: #5f4b00;
+}
+
+.status.active {
+    background-color: #28a745;
+    color: #fff;
+}
+
+/* Buttons */
+.btn {
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 0.85em;
+    margin: 0 3px;
+    display: inline-block;
+}
+
+.btn.activate {
+    color: #fff;
+    background-color: #007bff;
+}
+
+.btn.activate:hover {
+    background-color: #0056b3;
+}
+
+.btn.delete {
+    color: #fff;
+    background-color: #dc3545;
+}
+
+.btn.delete:hover {
+    background-color: #a71d2a;
+}
+
+.activated-text {
+    color: #28a745;
+    font-weight: bold;
+    margin-right: 6px;
+}
+</style>
+
+{% endblock %}

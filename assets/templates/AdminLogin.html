@@ -1,0 +1,334 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contents %}
+<style>
+    .admin-login-container {
+        min-height: calc(100vh - 200px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        padding: 2em;
+    }
+
+    .admin-login-card {
+        width: 100%;
+        max-width: 450px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+    }
+
+    .admin-login-header {
+        background: linear-gradient(135deg, #6f42c1, #5a32a3);
+        color: white;
+        padding: 2.5em 2em;
+        text-align: center;
+    }
+
+    .admin-shield-icon {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 1em;
+        fill: white;
+    }
+
+    .admin-login-header h2 {
+        font-size: 1.8em;
+        font-weight: bold;
+        margin-bottom: 0.3em;
+    }
+
+    .admin-login-header p {
+        color: #d8c4f5;
+        font-size: 0.9em;
+    }
+
+    .admin-badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 0.3em 1em;
+        border-radius: 20px;
+        font-size: 0.85em;
+        margin-top: 0.5em;
+        font-weight: 600;
+    }
+
+    .admin-login-body {
+        padding: 2.5em 2em;
+    }
+
+    .admin-form-group {
+        margin-bottom: 1.5em;
+    }
+
+    .admin-form-group label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 0.5em;
+    }
+
+    .admin-input-wrapper {
+        position: relative;
+    }
+
+    .admin-input-icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999;
+        font-size: 1.2em;
+    }
+
+    .admin-form-input {
+        width: 100%;
+        padding: 0.9em 1em 0.9em 2.8em;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 1em;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    .admin-form-input:focus {
+        outline: none;
+        border-color: #6f42c1;
+        box-shadow: 0 0 0 3px rgba(111, 66, 193, 0.1);
+    }
+
+    .admin-password-toggle {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #999;
+        font-size: 1.2em;
+        padding: 0.3em;
+    }
+
+    .admin-password-toggle:hover {
+        color: #666;
+    }
+
+    .admin-button-group {
+        display: flex;
+        gap: 1em;
+        margin-bottom: 1em;
+    }
+
+    .admin-btn {
+        flex: 1;
+        padding: 0.9em 1.5em;
+        border: none;
+        border-radius: 8px;
+        font-size: 1em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .admin-btn-login {
+        background: linear-gradient(135deg, #6f42c1, #5a32a3);
+        color: white;
+        box-shadow: 0 4px 15px rgba(111, 66, 193, 0.3);
+    }
+
+    .admin-btn-login:hover {
+        background: linear-gradient(135deg, #5a32a3, #4a2884);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(111, 66, 193, 0.4);
+    }
+
+    .admin-btn-reset {
+        background: #e9ecef;
+        color: #495057;
+    }
+
+    .admin-btn-reset:hover {
+        background: #dee2e6;
+        transform: translateY(-2px);
+    }
+
+    .admin-message-box {
+        margin-top: 1em;
+        padding: 1em;
+        background: #d1ecf1;
+        border-left: 4px solid #6f42c1;
+        border-radius: 6px;
+        color: #004085;
+        font-size: 0.9em;
+    }
+
+    .admin-message-box.error {
+        background: #f8d7da;
+        border-left-color: #dc3545;
+        color: #721c24;
+    }
+
+    .admin-message-box.success {
+        background: #d4edda;
+        border-left-color: #28a745;
+        color: #155724;
+    }
+
+    .admin-security-notice {
+        margin-top: 1.5em;
+        text-align: center;
+        font-size: 0.75em;
+        color: #999;
+        padding: 1em;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+
+    .admin-security-notice p {
+        margin: 0.3em 0;
+    }
+
+    .admin-warning {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5em;
+        padding: 1em;
+        background: #fff3cd;
+        border: 1px solid #ffc107;
+        border-radius: 8px;
+        color: #856404;
+        font-size: 0.85em;
+        margin-bottom: 1.5em;
+    }
+
+    @media (max-width: 768px) {
+        .admin-login-container {
+            padding: 1em;
+        }
+
+        .admin-login-body {
+            padding: 1.5em 1.5em;
+        }
+
+        .admin-button-group {
+            flex-direction: column;
+        }
+    }
+</style>
+
+<div class="admin-login-container">
+    <div class="admin-login-card">
+        <!-- Header -->
+        <div class="admin-login-header">
+            <svg class="admin-shield-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+            </svg>
+            <h2>Administrator Portal</h2>
+            <p>Secure Admin Access</p>
+            <span class="admin-badge">🛡️ ADMIN ACCESS</span>
+        </div>
+
+        <!-- Form Body -->
+        <div class="admin-login-body">
+            <!-- Warning Notice -->
+            <div class="admin-warning">
+                <span>⚠️</span>
+                <span>Authorized personnel only. All access is logged and monitored.</span>
+            </div>
+
+            <form action="{% url 'AdminLoginCheck' %}" method="POST" id="adminLoginForm">
+                {% csrf_token %}
+
+                <!-- Admin ID Field -->
+                <div class="admin-form-group">
+                    <label for="loginid">Administrator ID</label>
+                    <div class="admin-input-wrapper">
+                        <span class="admin-input-icon">👨‍💼</span>
+                        <input 
+                            type="text" 
+                            name="loginid" 
+                            id="loginid" 
+                            class="admin-form-input"
+                            placeholder="Enter Administrator ID"
+                            required
+                        />
+                    </div>
+                </div>
+
+                <!-- Password Field -->
+                <div class="admin-form-group">
+                    <label for="pswd">Admin Password</label>
+                    <div class="admin-input-wrapper">
+                        <span class="admin-input-icon">🔐</span>
+                        <input 
+                            type="password" 
+                            name="pswd" 
+                            id="pswd" 
+                            class="admin-form-input"
+                            placeholder="Enter Admin Password"
+                            required
+                        />
+                        <button type="button" class="admin-password-toggle" onclick="toggleAdminPassword()">
+                            <span id="adminEyeIcon">👁️</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="admin-button-group">
+                    <button type="submit" class="admin-btn admin-btn-login">
+                        Admin Login
+                    </button>
+                    <button type="reset" class="admin-btn admin-btn-reset">
+                        Reset
+                    </button>
+                </div>
+
+                <!-- Messages -->
+                {% if messages %}
+                <div class="admin-message-box success">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </form>
+
+            <!-- Security Notice -->
+            <div class="admin-security-notice">
+                <p>🔒 SSL Encrypted Connection</p>
+                <p>🛡️ Two-Factor Authentication Enabled</p>
+                <p>📊 Activity Monitoring Active</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleAdminPassword() {
+        const passwordInput = document.getElementById('pswd');
+        const eyeIcon = document.getElementById('adminEyeIcon');
+        
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            eyeIcon.textContent = '🙈';
+        } else {
+            passwordInput.type = 'password';
+            eyeIcon.textContent = '👁️';
+        }
+    }
+
+    // Add login timestamp
+    document.getElementById('adminLoginForm').addEventListener('submit', function() {
+        console.log('Admin login attempted at:', new Date().toISOString());
+    });
+</script>
+
+{% endblock %}

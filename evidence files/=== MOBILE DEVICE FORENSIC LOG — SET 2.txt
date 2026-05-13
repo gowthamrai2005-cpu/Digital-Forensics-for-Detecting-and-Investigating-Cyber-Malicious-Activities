@@ -1,0 +1,29 @@
+=== MOBILE DEVICE FORENSIC LOG — SET 2: SIM Swap & Account Takeover ===
+[2026-03-13 09:00:10] ALERT: SIM card for number +1-555-847-2341 transferred to new device without owner authorization
+[2026-03-13 09:00:55] CRITICAL: Carrier Verizon processed SIM swap using fraudulent ID documents
+[2026-03-13 09:01:40] WARNING: All SMS messages including 2FA codes now delivered to attacker's device
+[2026-03-13 09:02:25] ALERT: Google account 'jdoe@gmail.com' SMS 2FA code intercepted — account takeover in progress
+[2026-03-13 09:03:10] CRITICAL: Google account password reset completed by attacker using intercepted SMS code
+[2026-03-13 09:03:55] WARNING: Gmail inbox accessed — attacker searching for financial account recovery emails
+[2026-03-13 09:04:40] ALERT: Bank of America account password reset initiated using Gmail access
+[2026-03-13 09:05:25] CRITICAL: $23,000 wire transfer initiated from victim's Bank of America account
+[2026-03-13 09:06:10] WARNING: Coinbase account accessed — cryptocurrency portfolio worth $84,000 targeted
+[2026-03-13 09:06:55] ALERT: $84,000 in Bitcoin transferred to wallet bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq
+[2026-03-13 09:07:40] CRITICAL: PayPal account accessed — $3,400 in linked bank account drained
+[2026-03-13 09:08:25] WARNING: Venmo account compromised — fraudulent transfer requests sent to victim's contacts
+[2026-03-13 09:09:10] ALERT: LinkedIn account modified — job title and contact details changed
+[2026-03-13 09:09:55] CRITICAL: Microsoft 365 corporate account compromised — business email accessed
+[2026-03-13 09:10:40] WARNING: Business email used to request $125,000 wire transfer from company accountant
+[2026-03-13 09:11:25] ALERT: Accountant nearly processed transfer — stopped when victim called personally
+[2026-03-13 09:12:10] CRITICAL: Total fraud loss: $110,400 in first 72 minutes of SIM swap
+[2026-03-13 09:12:55] WARNING: Carrier fraud team investigating — fraudulent store employee involved
+[2026-03-13 09:13:40] ALERT: CCTV footage from Verizon store obtained — suspect face captured
+[2026-03-13 09:14:25] CRITICAL: Fraudulent ID used at store was counterfeit state driving license
+[2026-03-13 09:15:10] WARNING: Suspect linked to 14 prior SIM swap attacks across 3 states
+[2026-03-13 09:15:55] ALERT: FBI Financial Crimes task force notified — federal wire fraud charges applicable
+[2026-03-13 09:16:40] CRITICAL: Coinbase Bitcoin wallet traced through blockchain analysis — mixer used
+[2026-03-13 09:17:25] WARNING: Chainalysis blockchain tracing identifies exchange cash-out point
+[2026-03-13 09:18:10] ALERT: Target exchange Binance subpoenaed for KYC records on receiving wallet
+[2026-03-13 09:18:55] CRITICAL: Carrier implementing SIM swap protections — port freeze and PIN required
+[2026-03-13 09:19:40] WARNING: Victim advised to switch to app-based 2FA (Authenticator) — SMS 2FA disabled
+[2026-03-13 09:20:25] ALERT: FTC complaint filed — FCC regulatory complaint also submitted against carrier

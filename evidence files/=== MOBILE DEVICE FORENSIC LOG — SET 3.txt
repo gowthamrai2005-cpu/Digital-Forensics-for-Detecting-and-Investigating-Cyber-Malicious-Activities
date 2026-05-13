@@ -1,0 +1,28 @@
+=== MOBILE DEVICE FORENSIC LOG — SET 3: Trojanized Banking App ===
+[2026-03-16 11:15:00] ALERT: Malicious APK 'BankSecure_Pro_v2.apk' detected on device IMEI: 867530012345678
+[2026-03-16 11:15:45] CRITICAL: App impersonates legitimate 'TrustBank' application — icon and UI identical
+[2026-03-16 11:16:30] WARNING: APK downloaded from third-party site 'apk-free-apps.net' — not official store
+[2026-03-16 11:17:15] ALERT: App requests Accessibility Service permissions — used for UI interaction overlay
+[2026-03-16 11:18:00] CRITICAL: Overlay attack active — fake login screen displayed on top of real banking apps
+[2026-03-16 11:18:45] WARNING: Credentials captured: username 'john.smith', password 'Banking#2026' for TrustBank
+[2026-03-16 11:19:30] ALERT: Real-time OTP interception — SMS codes forwarded to C2 185.220.101.90
+[2026-03-16 11:20:15] CRITICAL: Attacker logged into victim's bank account using stolen credentials + OTP
+[2026-03-16 11:21:00] WARNING: $8,400 transferred to mule account in 3 transactions of $2,800 each
+[2026-03-16 11:21:45] ALERT: App also targeting PayPal, Revolut, and Crypto.com applications
+[2026-03-16 11:22:30] CRITICAL: Crypto.com credentials captured — $14,000 in ETH transferred out
+[2026-03-16 11:23:15] WARNING: Malware scans device for cryptocurrency wallet seed phrases in photos
+[2026-03-16 11:24:00] ALERT: Seed phrase found in screenshot in gallery — 12-word phrase photographed by victim
+[2026-03-16 11:24:45] CRITICAL: Hardware wallet derived from seed phrase — $47,000 in crypto drained
+[2026-03-16 11:25:30] WARNING: Malware family identified as 'Anatsa' (TeaBot) — known banking trojan
+[2026-03-16 11:26:15] ALERT: C2 panel at 185.220.101.90/panel — Anatsa admin interface discovered
+[2026-03-16 11:27:00] CRITICAL: C2 panel shows 1,247 infected devices globally — large campaign
+[2026-03-16 11:27:45] WARNING: C2 admin panel credentials brute-forced by security researcher — accessible
+[2026-03-16 11:28:30] ALERT: Victim list extracted — 1,247 entries with device info and stolen credentials
+[2026-03-16 11:29:15] CRITICAL: Total fraud across all 1,247 victims estimated at $2.3M
+[2026-03-16 11:30:00] WARNING: Europol Cybercrime Centre (EC3) and FBI Joint operation initiated
+[2026-03-16 11:30:45] ALERT: C2 server hosting provider in Netherlands served takedown notice
+[2026-03-16 11:31:30] CRITICAL: APK distribution sites across 14 domains simultaneously taken down
+[2026-03-16 11:32:15] WARNING: Android malware sample submitted to Google — Play Protect signatures updated
+[2026-03-16 11:33:00] ALERT: 1,247 victim notification letters prepared — coordinated by national CERT
+
+

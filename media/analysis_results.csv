@@ -1,0 +1,2 @@
+result_id,case_id,evidence_id,analysis_type,findings,tools_used,analysis_date,analyst
+ANALYSIS_CASE_42a40c50_0001,CASE_42a40c50,EVID_CASE_42a40c50_0001,Basic Check,Suspicious activity found,"ToolX, ToolY",2026-04-17T13:13:05.631613,Detective John Smith

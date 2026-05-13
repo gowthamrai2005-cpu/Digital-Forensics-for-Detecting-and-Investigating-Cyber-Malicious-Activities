@@ -1,0 +1,2 @@
+evidence_id,case_id,evidence_type,source,location,collection_date,hash_value,description,chain_of_custody
+EVID_CASE_42a40c50_0001,CASE_42a40c50,computer,Workstation,Room 101,2026-04-17T13:13:05.613256,9f950326e0e150da81cdc95e474c1678eec30d32bd65287d5a6bbec80de94cf6,Suspicious computer,2026-04-17T13:13:05.613256 - Collected by Detective John Smith | Source: Workstation | Location: Room 101

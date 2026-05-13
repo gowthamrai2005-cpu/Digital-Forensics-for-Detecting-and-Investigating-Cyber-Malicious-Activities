@@ -1,0 +1,41 @@
+{
+  "case_id": "CASE_d2292129",
+  "total_evidence": 1,
+  "total_analysis_results": 1,
+  "total_malware_samples": 3,
+  "evidence_by_type": {
+    "computer": 1
+  },
+  "malicious_activities": {
+    "Rootkit": 1,
+    "Ransomware": 1,
+    "Adware": 1
+  },
+  "tools_used": [
+    "ToolY",
+    "ToolX"
+  ],
+  "analysis_timeline": {
+    "2026-04-17": 1
+  },
+  "malware_statistics": {
+    "total_samples": 3,
+    "threat_types": {
+      "Rootkit": 1,
+      "Ransomware": 1,
+      "Adware": 1
+    },
+    "file_types": {
+      "Unknown": 3
+    },
+    "avg_file_size": 221.66666666666666,
+    "avg_entropy": 5.153025660839606,
+    "total_iocs": 8
+  },
+  "investigation_metrics": {
+    "duration_days": 0,
+    "evidence_per_day": 1.0,
+    "analysis_per_day": 1.0,
+    "team_size": 3
+  }
+}

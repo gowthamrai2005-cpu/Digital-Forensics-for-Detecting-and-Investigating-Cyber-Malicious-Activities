@@ -1,0 +1,29 @@
+=== NETWORK FORENSIC LOG — SET 3: ARP Spoofing / MITM Attack ===
+[2026-03-16 10:05:00] WARNING: Duplicate ARP reply detected — IP 10.0.1.1 claimed by both MAC aa:bb:cc:dd:ee:ff and 11:22:33:44:55:66
+[2026-03-16 10:05:45] CRITICAL: ARP poisoning confirmed — gateway 10.0.1.1 MAC table entry overwritten on 34 hosts
+[2026-03-16 10:06:30] ALERT: Rogue device with MAC 11:22:33:44:55:66 connected to switch port Gi1/0/14
+[2026-03-16 10:07:15] CRITICAL: All traffic from VLAN 10 now routed through rogue device — full MITM established
+[2026-03-16 10:08:00] WARNING: SSL stripping attack detected — HTTPS requests downgraded to HTTP on 12 connections
+[2026-03-16 10:08:45] ALERT: Plaintext credentials captured: user 'jsmith@corp.com' password 'Summer2026!' on HR portal
+[2026-03-16 10:09:30] CRITICAL: 8 sets of plaintext credentials harvested in 5 minutes — high-value accounts targeted
+[2026-03-16 10:10:15] WARNING: Session cookies captured for active VPN sessions — replay attack possible
+[2026-03-16 10:11:00] ALERT: HSTS bypass attempted — attacker serving self-signed certificate for banking portal
+[2026-03-16 10:11:45] CRITICAL: Certificate error alerts suppressed on rogue device — users not warned
+[2026-03-16 10:12:30] WARNING: SMB traffic intercepted — NTLM challenge-response hashes captured for 6 users
+[2026-03-16 10:13:15] ALERT: NTLM hash for 'domain_admin' captured — offline cracking attempt likely
+[2026-03-16 10:14:00] CRITICAL: Kerberos tickets intercepted — pass-the-ticket attack feasible
+[2026-03-16 10:14:45] WARNING: Email login for CEO account intercepted — plaintext IMAP over port 143 in use
+[2026-03-16 10:15:30] ALERT: VoIP call between CFO and legal team recorded via RTP stream capture
+[2026-03-16 10:16:15] CRITICAL: Financial wire transfer instructions modified in intercepted email — $450,000 at risk
+[2026-03-16 10:17:00] WARNING: Dynamic ARP inspection (DAI) not enabled on affected switch — gap identified
+[2026-03-16 10:17:45] ALERT: Rogue device identified as Raspberry Pi 4 — physically planted under desk in room 204
+[2026-03-16 10:18:30] CRITICAL: Device powered via PoE tap on patch cable — no visible external power source
+[2026-03-16 10:19:15] WARNING: Rogue device contained 4G modem — data relayed to attacker in real-time
+[2026-03-16 10:20:00] ALERT: Device removed by security team — 38 minutes of network traffic captured on device storage
+[2026-03-16 10:20:45] CRITICAL: Physical security review initiated — CCTV footage requested for room 204 access logs
+[2026-03-16 10:21:30] WARNING: All captured credentials immediately invalidated — forced password reset for 8 users
+[2026-03-16 10:22:15] ALERT: Wire transfer blocked — bank contacted before funds moved
+[2026-03-16 10:23:00] CRITICAL: DAI and port security enabled on all access switches — remediation complete
+[2026-03-16 10:23:45] WARNING: Vendor called — physical access badge logs show unauthorized visitor on March 15
+[2026-03-16 10:24:30] ALERT: Law enforcement notified — physical intrusion and wiretapping charges applicable
+

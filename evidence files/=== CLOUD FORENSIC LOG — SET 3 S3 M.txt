@@ -1,0 +1,29 @@
+=== CLOUD FORENSIC LOG — SET 3: S3 Mass Data Exfiltration ===
+[2026-03-18 14:30:00] ALERT: Anomalous S3 GetObject activity — 4,200 requests in 10 minutes from IP 185.234.219.10
+[2026-03-18 14:30:45] CRITICAL: PII data bucket 'customer-records-prod' accessed by external IP
+[2026-03-18 14:31:30] WARNING: 1.2 GB downloaded from 'customer-records-prod' — exceeds 30-day average by 9,800%
+[2026-03-18 14:32:15] ALERT: API key used: AKIA4XAMPLEKEY1234 — last rotated 847 days ago
+[2026-03-18 14:33:00] CRITICAL: Files accessed include: ssn_records_2024.csv, credit_card_data.csv, medical_records.json
+[2026-03-18 14:33:45] WARNING: S3 bucket versioning disabled — previous file versions deleted
+[2026-03-18 14:34:30] ALERT: Bucket replication rule added — all objects replicated to attacker-controlled bucket
+[2026-03-18 14:35:15] CRITICAL: 847,000 customer records estimated to be exfiltrated — GDPR breach triggered
+[2026-03-18 14:36:00] WARNING: Macie PII detection alert generated but email notification suppressed
+[2026-03-18 14:36:45] ALERT: S3 server-side encryption disabled on 'customer-records-prod'
+[2026-03-18 14:37:30] CRITICAL: Bucket access logging disabled — evidence destruction in progress
+[2026-03-18 14:38:15] WARNING: Object-level CloudTrail events not enabled — partial forensic gap
+[2026-03-18 14:39:00] ALERT: 22 additional S3 buckets enumerated using compromised API key
+[2026-03-18 14:39:45] CRITICAL: 'hr-payroll-data-2025' bucket accessed — 340 MB employee salary data downloaded
+[2026-03-18 14:40:30] WARNING: 'source-code-private' bucket accessed — 2.1 GB intellectual property at risk
+[2026-03-18 14:41:15] ALERT: Presigned URLs generated for 200 objects — valid for 7 days — shared externally
+[2026-03-18 14:42:00] CRITICAL: CloudFront distribution misconfigured — S3 origin made publicly accessible
+[2026-03-18 14:42:45] WARNING: KMS key usage spiked — 14,000 decrypt operations in 20 minutes
+[2026-03-18 14:43:30] ALERT: IAM access key disabled by security team — attacker switched to second key
+[2026-03-18 14:44:15] CRITICAL: Second API key AKIA4XAMPLEKEY5678 active — created 3 days ago by compromised user
+[2026-03-18 14:45:00] WARNING: Data transfer destination IP 185.234.219.10 linked to known threat actor group APT-41
+[2026-03-18 14:45:45] ALERT: Attacker downloaded S3 inventory manifest — complete list of all objects obtained
+[2026-03-18 14:46:30] CRITICAL: Total exfiltrated: 8.7 GB across 14 buckets — breach notification required
+[2026-03-18 14:47:15] WARNING: All compromised API keys revoked — active sessions terminated
+[2026-03-18 14:48:00] ALERT: Forensic hold placed on all affected S3 buckets — object deletion blocked
+[2026-03-18 14:48:45] CRITICAL: GDPR 72-hour notification window started: 2026-03-18 14:48:45 UTC
+[2026-03-18 14:49:30] WARNING: Legal team notified — data breach response plan activated
+[2026-03-18 14:50:15] ALERT: AWS support case opened — request for full API call history from 185.234.219.10

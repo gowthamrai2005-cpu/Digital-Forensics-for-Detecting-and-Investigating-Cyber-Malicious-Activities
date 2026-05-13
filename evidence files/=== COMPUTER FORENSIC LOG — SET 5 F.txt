@@ -1,0 +1,31 @@
+=== COMPUTER FORENSIC LOG — SET 5: Fileless Malware / Cobalt Strike ===
+[2026-03-22 14:30:05] ALERT: Suspicious PowerShell process spawned by Microsoft Word on DESKTOP-MKTG-12
+[2026-03-22 14:30:50] CRITICAL: PowerShell executes base64 encoded command: IEX(New-Object Net.WebClient).DownloadString
+[2026-03-22 14:31:35] WARNING: Malicious script downloaded from https://185.220.101.67/update.ps1 — no file on disk
+[2026-03-22 14:32:20] ALERT: Cobalt Strike shellcode injected into legitimate process svchost.exe (PID 1234)
+[2026-03-22 14:33:05] CRITICAL: Cobalt Strike beacon active — C2 check-in to 185.220.101.67 every 60 seconds
+[2026-03-22 14:33:50] WARNING: Beacon uses HTTPS with valid certificate — SSL inspection bypass
+[2026-03-22 14:34:35] ALERT: Process injection: shellcode written to notepad.exe memory via WriteProcessMemory
+[2026-03-22 14:35:20] CRITICAL: Cobalt Strike executing entirely in memory — no files written to disk
+[2026-03-22 14:36:05] WARNING: Beacon malleable C2 profile mimicking Microsoft update traffic
+[2026-03-22 14:36:50] ALERT: Named pipe lateral movement — beacon pivoting to DESKTOP-MKTG-14 via SMB
+[2026-03-22 14:37:35] CRITICAL: Beacon deployed to 14 hosts across marketing and finance VLANs
+[2026-03-22 14:38:20] WARNING: Cobalt Strike BOF (Beacon Object File) executes credential harvesting
+[2026-03-22 14:39:05] ALERT: Operator running Cobalt Strike Team Server at 185.220.101.67:50050
+[2026-03-22 14:39:50] CRITICAL: Team Server certificate SHA256: 87:cd:ef:01:23:45 — matches known CS watermark
+[2026-03-22 14:40:35] WARNING: Screenshot of operator desktop captured — Linux OS, Russian keyboard layout
+[2026-03-22 14:41:20] ALERT: Keylogging active on DESKTOP-FIN-03 — CFO email password captured
+[2026-03-22 14:42:05] CRITICAL: CFO email accessed — M&A target company identified from confidential emails
+[2026-03-22 14:42:50] WARNING: Stock trades placed 40 minutes after M&A email accessed — insider trading suspected
+[2026-03-22 14:43:35] ALERT: SEC market surveillance flag triggered — unusual options activity in target company
+[2026-03-22 14:44:20] CRITICAL: $2.3M profit in options — SEC and FBI Financial Crimes investigating
+[2026-03-22 14:45:05] WARNING: Cobalt Strike license cracked — unlicensed copy indicates criminal actor
+[2026-03-22 14:45:50] ALERT: Memory forensics confirms 14 in-memory Cobalt Strike beacons — no disk artifacts
+[2026-03-22 14:46:35] CRITICAL: EDR memory scanning detects all 14 beacons — simultaneous remediation
+[2026-03-22 14:47:20] WARNING: Infected processes terminated — network connections severed
+[2026-03-22 14:48:05] ALERT: C2 domain and IP blocked at firewall and DNS — beacons unable to reconnect
+[2026-03-22 14:48:50] CRITICAL: Initial infection vector: CVE-2023-23397 Outlook zero-click exploit via calendar invite
+[2026-03-22 14:49:35] WARNING: Microsoft patch MS23-023 not applied — 47 unpatched Outlook installations
+[2026-03-22 14:50:20] ALERT: Emergency patching initiated — all 47 Outlook installations patched within 2 hours
+[2026-03-22 14:51:05] CRITICAL: SEC subpoena served on broker — trading account traced to foreign national
+[2026-03-22 14:51:50] WARNING: Full incident report filed — CISA, FBI, and SEC all engaged simultaneously

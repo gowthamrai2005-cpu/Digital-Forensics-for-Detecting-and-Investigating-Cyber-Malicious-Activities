@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forensic Investigation of Malicious Activities in Digital Environments</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #004085;
+            --light-bg: #f4f7f6;
+            --dark-text: #333;
+            --light-text: #fff;
+            --accent-color: #28a745;
+        }
+        .users-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+    font-size: 1em;
+}
+
+.users-table th {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 18px 14px;
+    text-align: center;
+}
+
+.users-table td {
+    padding: 16px 14px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.users-table tr {
+    height: 58px;
+}
+
+.users-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.users-table tr:hover {
+    background-color: #eef3f7;
+}
+
+.users-table td a,
+.users-table td span {
+    margin: 0 6px;
+}
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 1.5em 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        nav {
+            background-color: var(--secondary-color);
+            padding: 0.8em 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 1.5em;
+        }
+
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2em auto;
+            padding: 0 1.5em;
+        }
+
+        section {
+            background-color: var(--light-text);
+            padding: 2em;
+            margin-bottom: 2em;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        section h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.8em;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5em;
+            margin-bottom: 1em;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .data-point {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8em;
+        }
+
+        .data-point span:first-child {
+            background-color: var(--accent-color);
+            color: var(--light-text);
+            padding: 0.3em 0.7em;
+            border-radius: 4px;
+            margin-right: 10px;
+            font-weight: bold;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 1.5em 0;
+            margin-top: 3em;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 0.5em 0;
+            }
+
+            .container {
+                margin: 1em auto;
+                padding: 0 1em;
+            }
+
+            section {
+                padding: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Forensic Investigation of Malicious Activities in Digital Environments</h1>
+</header>
+
+<nav>
+    <ul>
+
+        <li><a href="{% url 'AdminHome'  %}">Home</a></li>
+        <li><a href="{% url 'RegisterUsersView' %}">Users</a></li>
+        <li><a href="{% url 'index' %}">Logout</a></li>
+    </ul>
+</nav>
+
+{%block contents%}
+
+{%endblock%}
+<footer>
+    <p>&copy; 2025 Digital Forensics Report. All rights reserved.</p>
+</footer>
+
+<script>
+    // JavaScript to highlight the active menu item (optional)
+    document.addEventListener('DOMContentLoaded', () => {
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    });
+
+    
+</script>
+</body>
+</html>

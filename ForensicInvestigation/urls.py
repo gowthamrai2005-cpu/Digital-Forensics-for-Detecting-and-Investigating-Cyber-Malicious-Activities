@@ -1,0 +1,66 @@
+"""medical2 URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/2.2/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path
+from ForensicInvestigation import views as mainView
+from admins import views as admins
+from users import views as usr
+from django.contrib.staticfiles.urls import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf import settings
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path("", mainView.index, name="index"),
+    path("index/", mainView.index, name="index"),
+    path("Adminlogin/", mainView.AdminLogin, name="AdminLogin"),
+    path("UserLogin/", mainView.UserLogin, name="UserLogin"),
+    path("UserRegister/", mainView.UserRegister, name="UserRegister"),
+
+    # adminviews
+    path("AdminLoginCheck/", admins.AdminLoginCheck, name="AdminLoginCheck"),
+    path("AdminHome/", admins.AdminHome, name="AdminHome"),
+    path('RegisterUsersView/', admins.RegisterUsersView, name='RegisterUsersView'),
+    path('ActivaUsers/', admins.ActivaUsers, name='ActivaUsers'),
+    path('DeleteUsers/', admins.DeleteUsers, name='DeleteUsers'),
+
+    # User Views
+    path("UserRegisterActions/", usr.UserRegisterActions, name="UserRegisterActions"),
+    path("UserLoginCheck/", usr.UserLoginCheck, name="UserLoginCheck"),
+    path("UserHome/", usr.UserHome, name="UserHome"),
+    path("viewDataset/", usr.viewDataset, name="viewDataset"),
+    path("enhanced_forensics_view/",usr.enhanced_forensics_view, name="enhanced_forensics_view"),
+    path("dynamic_investigation_view/",usr.dynamic_investigation_view, name="dynamic_investigation_view"),
+    # Dataset viewing
+    path('viewDataset/', usr.viewDataset, name='viewDataset'),
+    
+    # CSV Export
+    path('export-forensics-csv/', usr.export_forensics_to_csv, name='export_forensics_csv'),
+    
+    # Check CSV status
+    path('check-csv-status/', usr.check_csv_files_status, name='check_csv_status'),
+    
+    # Quick view (auto-export if needed)
+    path('quick-view-dataset/', usr.quick_view_dataset, name='quick_view_dataset'),
+    
+    
+    # Investigation views
+    path('enhanced-forensics/', usr.enhanced_forensics_view, name='enhanced_forensics'),
+    path('dynamic-investigation/', usr.dynamic_investigation_view, name='dynamic_investigation_view'),
+
+]
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

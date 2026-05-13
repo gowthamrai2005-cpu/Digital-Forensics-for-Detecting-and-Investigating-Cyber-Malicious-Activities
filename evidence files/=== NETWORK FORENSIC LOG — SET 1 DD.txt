@@ -1,0 +1,32 @@
+=== NETWORK FORENSIC LOG — SET 1: DDoS / SYN Flood Attack ===
+[2026-03-10 02:00:05] ALERT: Inbound traffic spike detected — 840 Mbps on interface eth0 (baseline: 12 Mbps)
+[2026-03-10 02:00:50] CRITICAL: SYN flood detected — 240,000 SYN packets/second from 3,400 source IPs
+[2026-03-10 02:01:35] WARNING: SYN backlog queue full on web server 10.0.1.5 — legitimate connections rejected
+[2026-03-10 02:02:20] ALERT: Source IPs span 47 countries — botnet-coordinated attack confirmed
+[2026-03-10 02:03:05] CRITICAL: Web application unreachable — 100% packet loss to 10.0.1.5 from external
+[2026-03-10 02:03:50] WARNING: UDP flood secondary vector detected — 14,000 DNS amplification packets/second
+[2026-03-10 02:04:35] ALERT: NTP amplification packets observed — source port 123, factor 556x amplification
+[2026-03-10 02:05:20] CRITICAL: Firewall connection table full — 2,000,000 half-open connections
+[2026-03-10 02:06:05] WARNING: Firewall CPU at 100% — rule processing latency 8,400 ms
+[2026-03-10 02:06:50] ALERT: BGP route hijack attempt from AS64512 — upstream ISP notified
+[2026-03-10 02:07:35] CRITICAL: Mail server 10.0.1.8 also affected — email delivery suspended
+[2026-03-10 02:08:20] WARNING: ICMP flood detected — 90,000 ping packets/second from spoofed sources
+[2026-03-10 02:09:05] ALERT: ACK flood layer added — TCP state exhaustion on load balancer
+[2026-03-10 02:09:50] CRITICAL: Database server 10.0.1.12 connection pool exhausted — application errors
+[2026-03-10 02:10:35] WARNING: HTTP layer-7 flood started — 180,000 GET /search?q= requests/second
+[2026-03-10 02:11:20] ALERT: Slowloris attack component detected — partial HTTP headers keeping connections open
+[2026-03-10 02:12:05] CRITICAL: CDN upstream bandwidth saturated — provider Cloudflare auto-scrubbing activated
+[2026-03-10 02:12:50] WARNING: Scrubbing center absorbing 1.2 Tbps at peak — largest attack on record
+[2026-03-10 02:13:35] ALERT: Attack traffic from 185.220.0.0/16 — known Tor exit node range
+[2026-03-10 02:14:20] CRITICAL: Internal VLAN segmentation failing — attack traffic bleeding into prod network
+[2026-03-10 02:15:05] WARNING: IPS signatures updated — 1,200 botnet source IPs null-routed upstream
+[2026-03-10 02:15:50] ALERT: Attack vector shift — HTTP flood redirected to API endpoints /api/v1/login
+[2026-03-10 02:16:35] CRITICAL: Authentication database under load — login endpoint response time 45 seconds
+[2026-03-10 02:17:20] WARNING: Rate limiting applied — 429 responses to sources exceeding 100 req/min
+[2026-03-10 02:18:05] ALERT: CAPTCHA challenge deployed on all public endpoints
+[2026-03-10 02:18:50] CRITICAL: Attack duration 18 minutes — estimated downtime cost $340,000
+[2026-03-10 02:19:35] WARNING: Traffic beginning to normalize — scrubbing effective for 78% of attack sources
+[2026-03-10 02:20:20] ALERT: Post-attack reconnaissance scan detected from 45.33.32.156 — attacker probing recovery
+[2026-03-10 02:21:05] CRITICAL: Full packet capture preserved (34 GB) for forensic analysis
+[2026-03-10 02:21:50] WARNING: ISP null-route lifted — services restored — monitoring at elevated sensitivity
+

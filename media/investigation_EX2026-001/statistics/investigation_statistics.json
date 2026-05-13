@@ -1,0 +1,45 @@
+{
+  "case_id": "EX2026-001",
+  "total_evidence": 1,
+  "total_analysis_results": 1,
+  "total_malware_samples": 4,
+  "evidence_by_type": {
+    "network_logs": 1
+  },
+  "malicious_activities": {
+    "Spyware": 1,
+    "Cryptominer": 1,
+    "RAT": 1,
+    "Trojan": 1
+  },
+  "tools_used": [
+    "FTK",
+    "EnCase",
+    "Autopsy",
+    "Wireshark"
+  ],
+  "analysis_timeline": {
+    "2026-05-01": 1
+  },
+  "malware_statistics": {
+    "total_samples": 4,
+    "threat_types": {
+      "Spyware": 1,
+      "Cryptominer": 1,
+      "RAT": 1,
+      "Trojan": 1
+    },
+    "file_types": {
+      "Unknown": 4
+    },
+    "avg_file_size": 302.75,
+    "avg_entropy": 5.206337981971503,
+    "total_iocs": 13
+  },
+  "investigation_metrics": {
+    "duration_days": 0,
+    "evidence_per_day": 1.0,
+    "analysis_per_day": 1.0,
+    "team_size": 3
+  }
+}

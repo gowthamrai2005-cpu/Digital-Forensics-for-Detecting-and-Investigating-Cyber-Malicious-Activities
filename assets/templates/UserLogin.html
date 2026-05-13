@@ -1,0 +1,349 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contents %}
+<style>
+    .login-container {
+        min-height: calc(100vh - 200px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        padding: 2em;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 450px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+    }
+
+    .login-header {
+        background: linear-gradient(135deg, #0056b3, #004085);
+        color: white;
+        padding: 2.5em 2em;
+        text-align: center;
+    }
+
+    .shield-icon {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 1em;
+        fill: white;
+    }
+
+    .login-header h2 {
+        font-size: 1.8em;
+        font-weight: bold;
+        margin-bottom: 0.3em;
+    }
+
+    .login-header p {
+        color: #b3d9ff;
+        font-size: 0.9em;
+    }
+
+    .login-body {
+        padding: 2.5em 2em;
+    }
+
+    .form-group {
+        margin-bottom: 1.5em;
+    }
+
+    .form-group label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 0.5em;
+    }
+
+    .input-wrapper {
+        position: relative;
+    }
+
+    .input-icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999;
+        font-size: 1.2em;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 0.9em 1em 0.9em 2.8em;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 1em;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: #0056b3;
+        box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+    }
+
+    .password-toggle {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #999;
+        font-size: 1.2em;
+        padding: 0.3em;
+    }
+
+    .password-toggle:hover {
+        color: #666;
+    }
+
+    .form-options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5em;
+        font-size: 0.85em;
+    }
+
+    .remember-me {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .remember-me input {
+        width: 16px;
+        height: 16px;
+        margin-right: 0.5em;
+        cursor: pointer;
+    }
+
+    .forgot-link {
+        color: #0056b3;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .forgot-link:hover {
+        color: #004085;
+        text-decoration: underline;
+    }
+
+    .button-group {
+        display: flex;
+        gap: 1em;
+        margin-bottom: 1em;
+    }
+
+    .btn {
+        flex: 1;
+        padding: 0.9em 1.5em;
+        border: none;
+        border-radius: 8px;
+        font-size: 1em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .btn-login {
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+        box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+    }
+
+    .btn-login:hover {
+        background: linear-gradient(135deg, #218838, #1aa179);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+    }
+
+    .btn-reset {
+        background: #e9ecef;
+        color: #495057;
+    }
+
+    .btn-reset:hover {
+        background: #dee2e6;
+        transform: translateY(-2px);
+    }
+
+    .message-box {
+        margin-top: 1em;
+        padding: 1em;
+        background: #d1ecf1;
+        border-left: 4px solid #0056b3;
+        border-radius: 6px;
+        color: #004085;
+        font-size: 0.9em;
+    }
+
+    .message-box.error {
+        background: #f8d7da;
+        border-left-color: #dc3545;
+        color: #721c24;
+    }
+
+    .message-box.success {
+        background: #d4edda;
+        border-left-color: #28a745;
+        color: #155724;
+    }
+
+    .registration-section {
+        margin-top: 1.5em;
+        padding-top: 1.5em;
+        border-top: 1px solid #e9ecef;
+        text-align: center;
+        font-size: 0.9em;
+        color: #666;
+    }
+
+    .registration-section a {
+        color: #0056b3;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .registration-section a:hover {
+        color: #004085;
+        text-decoration: underline;
+    }
+
+    .security-notice {
+        margin-top: 1.5em;
+        text-align: center;
+        font-size: 0.75em;
+        color: #999;
+    }
+
+    .security-notice p {
+        margin: 0.3em 0;
+    }
+
+    @media (max-width: 768px) {
+        .login-container {
+            padding: 1em;
+        }
+
+        .login-body {
+            padding: 1.5em 1.5em;
+        }
+
+        .button-group {
+            flex-direction: column;
+        }
+    }
+</style>
+
+<div class="login-container">
+    <div class="login-card">
+        <!-- Header -->
+        <div class="login-header">
+            <svg class="shield-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+            </svg>
+            <h2>Digital Forensics Portal</h2>
+            <p>Secure Access to Investigation Dashboard</p>
+        </div>
+
+        <!-- Form Body -->
+        <div class="login-body">
+            <form action="{% url 'UserLoginCheck' %}" method="POST" id="loginForm">
+                {% csrf_token %}
+
+                <!-- Login ID Field -->
+                <div class="form-group">
+                    <label for="loginid">Login ID</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">👤</span>
+                        <input 
+                            type="text" 
+                            name="loginid" 
+                            id="loginid" 
+                            class="form-input"
+                            placeholder="Enter your Login ID"
+                            required
+                        />
+                    </div>
+                </div>
+
+                <!-- Password Field -->
+                <div class="form-group">
+                    <label for="pswd">Password</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">🔒</span>
+                        <input 
+                            type="password" 
+                            name="pswd" 
+                            id="pswd" 
+                            class="form-input"
+                            placeholder="Enter your Password"
+                            required
+                        />
+                        <button type="button" class="password-toggle" onclick="togglePassword()">
+                            <span id="eyeIcon">👁️</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="button-group">
+                    <button type="submit" class="btn btn-login">Login</button>
+                    <button type="reset" class="btn btn-reset">Reset</button>
+                </div>
+
+                <!-- Messages -->
+                {% if messages %}
+                <div class="message-box success">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </form>
+
+            <!-- Registration Link -->
+            <div class="registration-section">
+                <p>Don't have an account? 
+                    <a href="{% url 'UserRegister' %}">Register Here</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Security Notice -->
+        <div class="security-notice">
+            <p>🔒 Secure connection established</p>
+            <p>All data is encrypted and protected</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function togglePassword() {
+        const passwordInput = document.getElementById('pswd');
+        const eyeIcon = document.getElementById('eyeIcon');
+        
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            eyeIcon.textContent = '🙈';
+        } else {
+            passwordInput.type = 'password';
+            eyeIcon.textContent = '👁️';
+        }
+    }
+</script>
+
+{% endblock %}

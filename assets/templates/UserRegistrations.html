@@ -1,0 +1,535 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contents %}
+<style>
+    .register-container {
+        min-height: calc(100vh - 200px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        padding: 2em 1em;
+    }
+
+    .register-card {
+        width: 100%;
+        max-width: 900px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+    }
+
+    .register-header {
+        background: linear-gradient(135deg, #0056b3, #004085);
+        color: white;
+        padding: 2em;
+        text-align: center;
+    }
+
+    .register-header svg {
+        width: 50px;
+        height: 50px;
+        margin: 0 auto 0.8em;
+        fill: white;
+    }
+
+    .register-header h2 {
+        font-size: 1.8em;
+        font-weight: bold;
+        margin-bottom: 0.3em;
+    }
+
+    .register-header p {
+        color: #b3d9ff;
+        font-size: 0.9em;
+    }
+
+    .register-body {
+        padding: 2.5em 2em;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5em 1.5em;
+        margin-bottom: 1.5em;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group.full-width {
+        grid-column: span 2;
+    }
+
+    .form-group label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 0.5em;
+    }
+
+    .form-group label .required {
+        color: #dc3545;
+        margin-left: 0.2em;
+    }
+
+    .input-wrapper {
+        position: relative;
+    }
+
+    .input-icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999;
+        font-size: 1.1em;
+        pointer-events: none;
+    }
+
+    .form-input, .form-textarea {
+        width: 100%;
+        padding: 0.8em 1em 0.8em 2.8em;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 1em;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .form-textarea {
+        resize: vertical;
+        min-height: 80px;
+        padding-top: 0.8em;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+        outline: none;
+        border-color: #0056b3;
+        box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+    }
+
+    .password-toggle {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #999;
+        font-size: 1.1em;
+        padding: 0.3em;
+    }
+
+    .password-toggle:hover {
+        color: #666;
+    }
+
+    .terms-section {
+        grid-column: span 2;
+        margin: 1em 0;
+        padding: 1em;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border: 2px solid #e9ecef;
+    }
+
+    .terms-checkbox {
+        display: flex;
+        align-items: flex-start;
+        cursor: pointer;
+    }
+
+    .terms-checkbox input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        margin-right: 0.8em;
+        margin-top: 0.2em;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    .terms-text {
+        font-size: 0.9em;
+        color: #495057;
+        line-height: 1.5;
+    }
+
+    .terms-link {
+        color: #0056b3;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .terms-link:hover {
+        color: #004085;
+        text-decoration: underline;
+    }
+
+    .button-group {
+        grid-column: span 2;
+        display: flex;
+        gap: 1em;
+        margin-top: 1em;
+    }
+
+    .btn {
+        flex: 1;
+        padding: 0.9em 1.5em;
+        border: none;
+        border-radius: 8px;
+        font-size: 1em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .btn-register {
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+        box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+    }
+
+    .btn-register:hover:not(:disabled) {
+        background: linear-gradient(135deg, #218838, #1aa179);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+    }
+
+    .btn-register:disabled {
+        background: #6c757d;
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+
+    .btn-reset {
+        background: #e9ecef;
+        color: #495057;
+    }
+
+    .btn-reset:hover {
+        background: #dee2e6;
+        transform: translateY(-2px);
+    }
+
+    .message-box {
+        grid-column: span 2;
+        margin-top: 1em;
+        padding: 1em;
+        background: #d1ecf1;
+        border-left: 4px solid #0056b3;
+        border-radius: 6px;
+        color: #004085;
+        font-size: 0.9em;
+        text-align: center;
+    }
+
+    .message-box.error {
+        background: #f8d7da;
+        border-left-color: #dc3545;
+        color: #721c24;
+    }
+
+    .message-box.success {
+        background: #d4edda;
+        border-left-color: #28a745;
+        color: #155724;
+    }
+
+    .login-section {
+        margin-top: 1.5em;
+        padding-top: 1.5em;
+        border-top: 1px solid #e9ecef;
+        text-align: center;
+        font-size: 0.9em;
+        color: #666;
+    }
+
+    .login-section a {
+        color: #0056b3;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .login-section a:hover {
+        color: #004085;
+        text-decoration: underline;
+    }
+
+    .field-help {
+        font-size: 0.75em;
+        color: #6c757d;
+        margin-top: 0.3em;
+    }
+
+    @media (max-width: 768px) {
+        .register-container {
+            padding: 1em;
+        }
+
+        .register-body {
+            padding: 1.5em;
+        }
+
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group.full-width,
+        .terms-section,
+        .button-group {
+            grid-column: span 1;
+        }
+
+        .button-group {
+            flex-direction: column;
+        }
+    }
+</style>
+
+<div class="register-container">
+    <div class="register-card">
+        <!-- Header -->
+        <div class="register-header">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+            </svg>
+            <h2>User Registration</h2>
+            <p>Join the Digital Forensics Portal</p>
+        </div>
+
+        <!-- Form Body -->
+        <div class="register-body">
+            <form action="{% url 'UserRegisterActions' %}" method="POST" id="registerForm">
+                {% csrf_token %}
+
+                <div class="form-grid">
+                    <!-- User Name -->
+                    <div class="form-group">
+                        <label for="{{ form.name.id_for_label }}">
+                            User Name<span class="required">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">👤</span>
+                            {{ form.name }}
+                        </div>
+                        <span class="field-help">Letters only, no numbers or special characters</span>
+                    </div>
+
+                    <!-- Login ID -->
+                    <div class="form-group">
+                        <label for="{{ form.loginid.id_for_label }}">
+                            Login ID<span class="required">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">🆔</span>
+                            {{ form.loginid }}
+                        </div>
+                        <span class="field-help">Letters only, choose a unique ID</span>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label for="{{ form.password.id_for_label }}">
+                            Password<span class="required">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">🔒</span>
+                            {{ form.password }}
+                            <button type="button" class="password-toggle" onclick="togglePassword('{{ form.password.id_for_label }}', 'eyeIcon1')">
+                                <span id="eyeIcon1">👁️</span>
+                            </button>
+                        </div>
+                        <span class="field-help">Min 8 characters, 1 uppercase, 1 lowercase, 1 number</span>
+                    </div>
+
+                    <!-- Mobile -->
+                    <div class="form-group">
+                        <label for="{{ form.mobile.id_for_label }}">
+                            Mobile Number<span class="required">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">📱</span>
+                            {{ form.mobile }}
+                        </div>
+                        <span class="field-help">10 digits, starting with 5, 6, 7, 8, or 9</span>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="{{ form.email.id_for_label }}">
+                            Email Address<span class="required">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">📧</span>
+                            {{ form.email }}
+                        </div>
+                        <span class="field-help">Valid email format required</span>
+                    </div>
+
+                    <!-- Locality -->
+                    <div class="form-group">
+                        <label for="{{ form.locality.id_for_label }}">
+                            Locality<span class="required">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">📍</span>
+                            {{ form.locality }}
+                        </div>
+                    </div>
+
+                    <!-- Address (Full Width) -->
+                    <div class="form-group full-width">
+                        <label for="{{ form.address.id_for_label }}">
+                            Address<span class="required">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <span class="input-icon" style="top: 20px;">🏠</span>
+                            {{ form.address }}
+                        </div>
+                    </div>
+
+                    <!-- City -->
+                    <div class="form-group">
+                        <label for="{{ form.city.id_for_label }}">
+                            City<span class="required">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">🏙️</span>
+                            {{ form.city }}
+                        </div>
+                        <span class="field-help">Letters and spaces only</span>
+                    </div>
+
+                    <!-- State -->
+                    <div class="form-group">
+                        <label for="{{ form.state.id_for_label }}">
+                            State<span class="required">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">🗺️</span>
+                            {{ form.state }}
+                        </div>
+                        <span class="field-help">Letters and spaces only</span>
+                    </div>
+
+                    <!-- Hidden Status Field -->
+                    {{ form.status }}
+
+                    <!-- Terms and Conditions -->
+                    <div class="terms-section">
+                        <label class="terms-checkbox">
+                            <input type="checkbox" name="terms" id="terms" required />
+                            <span class="terms-text">
+                                I agree to the 
+                                <a href="#" class="terms-link" onclick="showTerms(event)">Terms and Conditions</a> 
+                                and 
+                                <a href="#" class="terms-link" onclick="showPrivacy(event)">Privacy Policy</a>
+                                of the Digital Forensics Portal<span class="required">*</span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-register" id="registerBtn">
+                            Register
+                        </button>
+                        <button type="reset" class="btn btn-reset">
+                            Reset Form
+                        </button>
+                    </div>
+
+                    <!-- Messages -->
+                    {% if messages %}
+                    <div class="message-box {% if 'error' in messages %}error{% else %}success{% endif %}">
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </form>
+
+            <!-- Login Link -->
+            <div class="login-section">
+                <p>Already have an account? 
+                    <a href="{% url 'UserLogin' %}">Login Here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Add form-input class to Django form fields
+    document.addEventListener('DOMContentLoaded', function() {
+        const inputs = document.querySelectorAll('input[type="text"], input[type="password"], input[type="email"], textarea');
+        inputs.forEach(input => {
+            if (!input.classList.contains('terms')) {
+                if (input.tagName === 'TEXTAREA') {
+                    input.classList.add('form-textarea');
+                } else {
+                    input.classList.add('form-input');
+                }
+                input.setAttribute('autocomplete', 'off');
+            }
+        });
+
+        // Set placeholders
+        document.querySelector('#{{ form.name.id_for_label }}').placeholder = 'Enter your full name';
+        document.querySelector('#{{ form.loginid.id_for_label }}').placeholder = 'Choose a unique login ID';
+        document.querySelector('#{{ form.password.id_for_label }}').placeholder = 'Create a strong password';
+        document.querySelector('#{{ form.mobile.id_for_label }}').placeholder = 'Enter 10-digit mobile number';
+        document.querySelector('#{{ form.email.id_for_label }}').placeholder = 'Enter your email address';
+        document.querySelector('#{{ form.locality.id_for_label }}').placeholder = 'Enter your locality';
+        document.querySelector('#{{ form.address.id_for_label }}').placeholder = 'Enter your complete address';
+        document.querySelector('#{{ form.city.id_for_label }}').placeholder = 'Enter your city';
+        document.querySelector('#{{ form.state.id_for_label }}').placeholder = 'Enter your state';
+    });
+
+    function togglePassword(fieldId, iconId) {
+        const passwordInput = document.getElementById(fieldId);
+        const eyeIcon = document.getElementById(iconId);
+        
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            eyeIcon.textContent = '🙈';
+        } else {
+            passwordInput.type = 'password';
+            eyeIcon.textContent = '👁️';
+        }
+    }
+
+    function showTerms(event) {
+        event.preventDefault();
+        alert('Terms and Conditions:\n\n1. User Responsibilities\n2. Data Privacy\n3. Acceptable Use Policy\n4. Limitation of Liability\n\n(Link this to your actual Terms page)');
+    }
+
+    function showPrivacy(event) {
+        event.preventDefault();
+        alert('Privacy Policy:\n\n1. Data Collection\n2. Data Usage\n3. Data Protection\n4. User Rights\n\n(Link this to your actual Privacy page)');
+    }
+
+    // Enable/Disable submit button based on terms checkbox
+    const termsCheckbox = document.getElementById('terms');
+    const registerBtn = document.getElementById('registerBtn');
+
+    termsCheckbox.addEventListener('change', function() {
+        registerBtn.disabled = !this.checked;
+    });
+
+    // Initially disable the button
+    registerBtn.disabled = true;
+</script>
+
+{% endblock %}

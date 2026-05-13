@@ -1,0 +1,30 @@
+=== COMPUTER FORENSIC LOG — SET 3: Kernel Rootkit Installation ===
+[2026-03-16 03:00:10] ALERT: BSOD (Blue Screen) on SERVER-DB-01 followed by unexpected reboot
+[2026-03-16 03:00:55] CRITICAL: Memory dump analysis reveals unsigned kernel driver 'ntfs_helper.sys' loaded
+[2026-03-16 03:01:40] WARNING: Driver certificate: self-signed with expired timestamp — kernel DSE bypass used
+[2026-03-16 03:02:25] ALERT: CVE-2023-21768 exploited — Windows ALPC LPE vulnerability used for ring-0 access
+[2026-03-16 03:03:10] CRITICAL: Rootkit hooks SSDT (System Service Descriptor Table) — 14 syscalls modified
+[2026-03-16 03:03:55] WARNING: Process hiding active — 'svchost_helper.exe' invisible to Task Manager
+[2026-03-16 03:04:40] ALERT: File hiding active — rootkit files invisible to Explorer and command prompt
+[2026-03-16 03:05:25] CRITICAL: Registry hiding active — rootkit persistence key hidden from regedit
+[2026-03-16 03:06:10] WARNING: Network connection hiding — C2 connection to 185.220.101.45:443 not visible in netstat
+[2026-03-16 03:06:55] ALERT: Rootkit intercepts AV scan requests — malicious files return clean hashes
+[2026-03-16 03:07:40] CRITICAL: Keylogger operating at kernel level — all keystrokes captured pre-encryption
+[2026-03-16 03:08:25] WARNING: Active Directory domain admin password captured via kernel keylogger
+[2026-03-16 03:09:10] ALERT: Data staged in hidden directory C:\Windows\System32\wbem\logs\cache\
+[2026-03-16 03:09:55] CRITICAL: 14 GB of staged data — database dumps, config files, certificate private keys
+[2026-03-16 03:10:40] WARNING: Exfiltration via HTTPS to 185.220.101.45 — 840 MB/hour throughput
+[2026-03-16 03:11:25] ALERT: Rootkit detected only due to hash mismatch in secure boot measurement log
+[2026-03-16 03:12:10] CRITICAL: TPM PCR values show unauthorized code execution at boot — Secure Boot violated
+[2026-03-16 03:12:55] WARNING: UEFI firmware integrity check — no evidence of firmware rootkit (bootkits excluded)
+[2026-03-16 03:13:40] ALERT: Second server SERVER-APP-02 also shows identical rootkit indicators
+[2026-03-16 03:14:25] CRITICAL: Rootkit family identified as 'Demodex' — Chinese APT-41 attribution
+[2026-03-16 03:15:10] WARNING: YARA rule match: 14 signatures matching known APT-41 TTPs
+[2026-03-16 03:15:55] ALERT: NSA/CISA advisory AA22-110A — matching Demodex IOCs published April 2022
+[2026-03-16 03:16:40] CRITICAL: Clean-room rebuild initiated — servers reimaged from verified golden images
+[2026-03-16 03:17:25] WARNING: Memory forensics preserved before reimage — 128 GB RAM dump captured
+[2026-03-16 03:18:10] ALERT: All certificates on affected servers revoked and reissued
+[2026-03-16 03:18:55] CRITICAL: Domain admin password reset — all Kerberos tickets invalidated (krbtgt reset x2)
+[2026-03-16 03:19:40] WARNING: CISA and FBI notified — APT-41 attribution triggers federal notification requirement
+[2026-03-16 03:20:25] ALERT: Investigation summary shared with CISA via TAXII/STIX threat intel feed
+[2026-03-16 03:21:10] CRITICAL: Estimated dwell time: 94 days — attacker present since December 2

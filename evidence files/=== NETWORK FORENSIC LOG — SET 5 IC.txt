@@ -1,0 +1,27 @@
+=== NETWORK FORENSIC LOG — SET 5: ICMP Covert Channel / C2 Communication ===
+[2026-03-23 20:00:05] ALERT: Unusual ICMP echo request traffic — 2,400 packets/hour from workstation WS-112
+[2026-03-23 20:00:50] WARNING: ICMP payload size anomaly — standard ping is 32 bytes, observed 1,480 bytes
+[2026-03-23 20:01:35] ALERT: ICMP payload contains non-standard data — encrypted commands identified
+[2026-03-23 20:02:20] CRITICAL: ICMP covert channel tool 'ptunnel-ng' identified in process list on WS-112
+[2026-03-23 20:03:05] WARNING: C2 server 104.21.45.67 receiving ICMP responses with exfiltrated data
+[2026-03-23 20:03:50] ALERT: Firewall allows outbound ICMP — no inspection of payload content
+[2026-03-23 20:04:35] CRITICAL: 840 MB data exfiltrated via ICMP over 72-hour period — financial records
+[2026-03-23 20:05:20] WARNING: ICMP channel encrypted with XOR key — key recovered from memory dump
+[2026-03-23 20:06:05] ALERT: Decrypted ICMP payload reveals 'dir /s C:\Users', 'net user', 'ipconfig /all' commands
+[2026-03-23 20:06:50] CRITICAL: Attacker using ICMP tunnel as backup C2 — primary HTTPS C2 was blocked by proxy
+[2026-03-23 20:07:35] WARNING: First ICMP anomaly timestamp: 2026-03-20 08:14:22 — 72 hours undetected
+[2026-03-23 20:08:20] ALERT: 4 additional hosts using ICMP tunnel: WS-045, WS-067, WS-089, WS-112
+[2026-03-23 20:09:05] CRITICAL: Keylogger output exfiltrated via ICMP — 14 days of keystrokes captured
+[2026-03-23 20:09:50] WARNING: Screenshot exfiltration — 1 screenshot every 5 minutes sent via ICMP payload
+[2026-03-23 20:10:35] ALERT: ICMP rate limit applied on perimeter firewall — tunnel throughput reduced 95%
+[2026-03-23 20:11:20] CRITICAL: Attacker switches to IPv6 ICMP (ICMPv6) — firewall lacks IPv6 inspection
+[2026-03-23 20:12:05] WARNING: ICMPv6 blocking deployed — attacker loses C2 connectivity
+[2026-03-23 20:12:50] ALERT: Final C2 command received before block: 'exfil complete — initiate wiper'
+[2026-03-23 20:13:35] CRITICAL: Disk wiper 'cipher /w:C' executed on WS-112 — evidence destruction attempted
+[2026-03-23 20:14:20] WARNING: Forensic write-blocker activated remotely via EDR — wipe stopped at 12% completion
+[2026-03-23 20:15:05] ALERT: Disk image captured before further damage — 88% of evidence preserved
+[2026-03-23 20:15:50] CRITICAL: Malware family identified as 'IcedID' variant with custom ICMP module
+[2026-03-23 20:16:35] WARNING: YARA rule created for IcedID ICMP module — deployed to all 1,400 endpoints
+[2026-03-23 20:17:20] ALERT: Attribution analysis — ICMP technique matches APT-29 (Cozy Bear) TTP
+[2026-03-23 20:18:05] CRITICAL: CISA Emergency Directive compliance — all IOCs shared within 24 hours
+

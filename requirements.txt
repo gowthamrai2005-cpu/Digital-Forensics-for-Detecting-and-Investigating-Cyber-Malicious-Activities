@@ -1,0 +1,5 @@
+django
+python-jose
+matplotlib
+seaborn
+plotly

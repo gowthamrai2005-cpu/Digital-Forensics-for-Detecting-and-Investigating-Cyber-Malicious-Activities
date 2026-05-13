@@ -1,0 +1,775 @@
+{% extends 'users/userbase.html' %}
+{% load static %}
+{% block contents %}
+
+<style>
+/* ---------- Page Wrapper ---------- */
+.form-wrapper {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding: 40px 0;
+}
+
+/* ---------- Main Card ---------- */
+.form-card {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    padding: 40px;
+    margin-bottom: 30px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ---------- Header ---------- */
+.form-header {
+    background: linear-gradient(135deg, #0056b3 0%, #007bff 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    margin: -40px -40px 30px -40px;
+}
+
+.form-title {
+    font-size: 2em;
+    font-weight: 700;
+    margin: 0;
+}
+
+.form-subtitle {
+    margin: 10px 0 0 0;
+    opacity: 0.9;
+    font-size: 1.1em;
+}
+
+/* ---------- Alert Messages ---------- */
+.alert-box {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid;
+}
+
+.alert-info {
+    background: #d1ecf1;
+    border-left-color: #17a2b8;
+    color: #0c5460;
+}
+
+.alert-warning {
+    background: #fff3cd;
+    border-left-color: #ffc107;
+    color: #856404;
+}
+
+/* ---------- Form Table ---------- */
+.form-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+}
+
+.form-row {
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.form-row:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+.label-cell {
+    padding: 20px;
+    width: 25%;
+    vertical-align: top;
+    border-radius: 8px 0 0 8px;
+}
+
+.label-cell label {
+    font-weight: 600;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.required-mark {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.input-cell {
+    padding: 20px;
+    width: 50%;
+}
+
+.example-cell {
+    padding: 20px;
+    width: 25%;
+    font-size: 0.85em;
+    color: #6c757d;
+    vertical-align: top;
+    border-radius: 0 8px 8px 0;
+}
+
+/* ---------- Form Inputs ---------- */
+.form-table input[type="text"],
+.form-table input[type="email"],
+.form-table textarea,
+.form-table select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-table input[type="text"]:focus,
+.form-table input[type="email"]:focus,
+.form-table textarea:focus,
+.form-table select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+}
+
+.form-table textarea {
+    min-height: 100px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.form-table select {
+    cursor: pointer;
+    background: white;
+}
+
+/* ---------- Help Text ---------- */
+.help-text {
+    font-size: 0.85em;
+    color: #6c757d;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.help-text i {
+    color: #17a2b8;
+}
+
+/* ---------- Example Text ---------- */
+.example-text {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.example-text i {
+    color: #ffc107;
+}
+
+/* ---------- Form Sections ---------- */
+.form-section {
+    margin: 30px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid #007bff;
+}
+
+.section-title {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #0056b3;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ---------- Action Buttons ---------- */
+.form-actions {
+    margin-top: 40px;
+    text-align: center;
+    padding: 25px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(40,167,69,0.3);
+}
+
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(40,167,69,0.4);
+}
+
+.btn-submit:active {
+    transform: translateY(-1px);
+}
+
+.btn-reset {
+    background: #6c757d;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-left: 15px;
+    transition: all 0.3s ease;
+}
+
+.btn-reset:hover {
+    background: #5a6268;
+}
+
+/* ---------- Loading Indicator ---------- */
+.loading-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-content {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #007bff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ---------- Error Styling ---------- */
+.errorlist {
+    list-style: none;
+    padding: 10px 15px;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 6px;
+    color: #721c24;
+    margin: 10px 0;
+}
+
+.errorlist li {
+    margin: 5px 0;
+}
+
+/* ---------- Evidence Upload ---------- */
+.evidence-upload-wrapper {
+    border: 2px dashed #6c757d;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 20px;
+    background: #f8f9fa;
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+.evidence-upload-wrapper:hover {
+    border-color: #007bff;
+    background: #e9ecef;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 992px) {
+    .form-table {
+        display: block;
+    }
+    
+    .form-row {
+        display: block;
+        margin-bottom: 20px;
+    }
+    
+    .label-cell,
+    .input-cell,
+    .example-cell {
+        display: block;
+        width: 100%;
+        padding: 15px;
+    }
+    
+    .label-cell {
+        border-radius: 8px 8px 0 0;
+    }
+    
+    .example-cell {
+        border-radius: 0 0 8px 8px;
+        background: #e9ecef;
+    }
+    
+    .form-card {
+        padding: 20px;
+    }
+    
+    .form-header {
+        margin: -20px -20px 20px -20px;
+        padding: 20px;
+    }
+}
+
+/* ---------- Field Icons ---------- */
+.field-icon {
+    color: #007bff;
+    margin-right: 5px;
+}
+</style>
+
+<div class="form-wrapper">
+    <div class="container">
+        <div class="form-card">
+            
+            <div class="form-header">
+                <h2 class="form-title">
+                    <i class="fas fa-file-medical-alt"></i> Digital Forensics Investigation
+                </h2>
+                <p class="form-subtitle">Submit detailed forensic investigation information</p>
+            </div>
+
+            <!-- Instructions Alert -->
+            <div class="alert-box alert-info">
+                <strong><i class="fas fa-info-circle"></i> Instructions:</strong>
+                Fill out all required fields carefully. Examples are provided for each field.
+                Use comma-separated values for multiple entries (team members, tools, etc.).
+            </div>
+
+            <!-- Django Messages -->
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert-box alert-{{ message.tags }}">
+                    <strong>{{ message }}</strong>
+                </div>
+                {% endfor %}
+            {% endif %}
+
+            <!-- FIX: enctype added; closing </form> tag moved to correct position -->
+            <form method="post" enctype="multipart/form-data" id="investigationForm">
+                {% csrf_token %}
+                
+                <!-- Basic Information Section -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <i class="fas fa-info-circle"></i> Basic Case Information
+                    </div>
+                    
+                    <table class="form-table">
+                        {% for field in form %}
+                        {% if field.name in 'case_id,case_name,investigator' %}
+                        <tr class="form-row">
+                            <td class="label-cell">
+                                <label for="{{ field.id_for_label }}">
+                                    {% if field.name == 'case_id' %}<i class="fas fa-fingerprint field-icon"></i>{% endif %}
+                                    {% if field.name == 'case_name' %}<i class="fas fa-folder field-icon"></i>{% endif %}
+                                    {% if field.name == 'investigator' %}<i class="fas fa-user-tie field-icon"></i>{% endif %}
+                                    {{ field.label }}
+                                    {% if field.field.required %}
+                                    <span class="required-mark">*</span>
+                                    {% endif %}
+                                </label>
+                            </td>
+                            <td class="input-cell">
+                                {{ field }}
+                                {% if field.errors %}
+                                    <ul class="errorlist">
+                                        {% for error in field.errors %}
+                                        <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                                {% if field.help_text %}
+                                <div class="help-text">
+                                    <i class="fas fa-question-circle"></i>
+                                    {{ field.help_text }}
+                                </div>
+                                {% endif %}
+                            </td>
+                            <td class="example-cell">
+                                {% if field.widget.attrs.placeholder %}
+                                <div class="example-text">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <strong>Example:</strong> {{ field.widget.attrs.placeholder }}
+                                </div>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
+
+                <!-- Case Details Section -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <i class="fas fa-file-alt"></i> Case Details
+                    </div>
+                    
+                    <table class="form-table">
+                        {% for field in form %}
+                        {% if field.name in 'description,jurisdiction,legal_requirements' %}
+                        <tr class="form-row">
+                            <td class="label-cell">
+                                <label for="{{ field.id_for_label }}">
+                                    {% if field.name == 'description' %}<i class="fas fa-file-alt field-icon"></i>{% endif %}
+                                    {% if field.name == 'jurisdiction' %}<i class="fas fa-map-marker-alt field-icon"></i>{% endif %}
+                                    {% if field.name == 'legal_requirements' %}<i class="fas fa-gavel field-icon"></i>{% endif %}
+                                    {{ field.label }}
+                                    {% if field.field.required %}
+                                    <span class="required-mark">*</span>
+                                    {% endif %}
+                                </label>
+                            </td>
+                            <td class="input-cell">
+                                {{ field }}
+                                {% if field.errors %}
+                                    <ul class="errorlist">
+                                        {% for error in field.errors %}
+                                        <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                                {% if field.help_text %}
+                                <div class="help-text">
+                                    <i class="fas fa-question-circle"></i>
+                                    {{ field.help_text }}
+                                </div>
+                                {% endif %}
+                            </td>
+                            <td class="example-cell">
+                                {% if field.widget.attrs.placeholder %}
+                                <div class="example-text">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <strong>Example:</strong> {{ field.widget.attrs.placeholder }}
+                                </div>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
+
+                <!-- Team & Tools Section -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <i class="fas fa-users"></i> Team & Tools
+                    </div>
+                    
+                    <table class="form-table">
+                        {% for field in form %}
+                        {% if field.name in 'team_members,tools_used' %}
+                        <tr class="form-row">
+                            <td class="label-cell">
+                                <label for="{{ field.id_for_label }}">
+                                    {% if field.name == 'team_members' %}<i class="fas fa-users field-icon"></i>{% endif %}
+                                    {% if field.name == 'tools_used' %}<i class="fas fa-tools field-icon"></i>{% endif %}
+                                    {{ field.label }}
+                                    {% if field.field.required %}
+                                    <span class="required-mark">*</span>
+                                    {% endif %}
+                                </label>
+                            </td>
+                            <td class="input-cell">
+                                {{ field }}
+                                {% if field.errors %}
+                                    <ul class="errorlist">
+                                        {% for error in field.errors %}
+                                        <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                                {% if field.help_text %}
+                                <div class="help-text">
+                                    <i class="fas fa-question-circle"></i>
+                                    {{ field.help_text }}
+                                </div>
+                                {% endif %}
+                            </td>
+                            <td class="example-cell">
+                                {% if field.widget.attrs.placeholder %}
+                                <div class="example-text">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <strong>Example:</strong> {{ field.widget.attrs.placeholder }}
+                                </div>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
+
+                <!-- Evidence Information Section -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <i class="fas fa-box"></i> Evidence Information
+                    </div>
+                    
+                    <table class="form-table">
+                        {% for field in form %}
+                        {% if field.name in 'evidence_type,evidence_source,evidence_location' %}
+                        <tr class="form-row">
+                            <td class="label-cell">
+                                <label for="{{ field.id_for_label }}">
+                                    {% if field.name == 'evidence_type' %}<i class="fas fa-box field-icon"></i>{% endif %}
+                                    {% if field.name == 'evidence_source' %}<i class="fas fa-database field-icon"></i>{% endif %}
+                                    {% if field.name == 'evidence_location' %}<i class="fas fa-map-pin field-icon"></i>{% endif %}
+                                    {{ field.label }}
+                                    {% if field.field.required %}
+                                    <span class="required-mark">*</span>
+                                    {% endif %}
+                                </label>
+                            </td>
+                            <td class="input-cell">
+                                {{ field }}
+                                {% if field.errors %}
+                                    <ul class="errorlist">
+                                        {% for error in field.errors %}
+                                        <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                                {% if field.help_text %}
+                                <div class="help-text">
+                                    <i class="fas fa-question-circle"></i>
+                                    {{ field.help_text }}
+                                </div>
+                                {% endif %}
+                            </td>
+                            <td class="example-cell">
+                                {% if field.widget.attrs.placeholder %}
+                                <div class="example-text">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <strong>Example:</strong> {{ field.widget.attrs.placeholder }}
+                                </div>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </table>
+
+                    <!-- Evidence File Upload (replaces old evidence_description textarea) -->
+                    <div class="mb-3" style="padding: 0 20px;">
+                        <label for="{{ form.evidence_file.id_for_label }}" class="form-label fw-semibold"
+                               style="font-weight: 600; color: #2c3e50; display: block; margin-bottom: 10px;">
+                            <i class="fas fa-upload field-icon"></i>
+                            Upload Evidence File <span class="required-mark">*</span>
+                        </label>
+
+                        <!-- Styled file-drop area -->
+                        <div class="evidence-upload-wrapper"
+                             id="uploadWrapper"
+                             onclick="document.getElementById('{{ form.evidence_file.id_for_label }}').click()">
+
+                            <i class="fas fa-cloud-upload-alt fa-2x" style="color: #6c757d;"></i>
+                            <p style="margin: 8px 0 4px; color: #6c757d; font-size: 0.9em;">
+                                Click to browse or drag &amp; drop your evidence file here
+                            </p>
+                            <p style="color: #6c757d; font-size: 0.75em; margin: 0;">
+                                Accepted: <code>.txt</code> &nbsp;·&nbsp; <code>.log</code> &nbsp;·&nbsp;
+                                <code>.csv</code> &nbsp;·&nbsp; <code>.json</code> &nbsp;·&nbsp;
+                                <code>.pcap</code> &nbsp;·&nbsp; <code>.E01</code> &nbsp;·&nbsp;
+                                <code>.dd</code> &nbsp;&nbsp;|&nbsp;&nbsp; Max&nbsp;50&nbsp;MB
+                            </p>
+
+                            <!-- Actual (hidden) input rendered by Django -->
+                            <div style="display:none;">
+                                {{ form.evidence_file }}
+                            </div>
+                        </div>
+
+                        <!-- File name preview (updated by JS) -->
+                        <div id="file-preview" style="display:none; margin-top: 8px; color: #28a745; font-size: 0.85em;">
+                            <i class="fas fa-file-check"></i>
+                            <span id="file-preview-name"></span>
+                            <span id="file-preview-size" style="color: #6c757d; margin-left: 6px;"></span>
+                        </div>
+
+                        <!-- Django field errors -->
+                        {% if form.evidence_file.errors %}
+                        <ul class="errorlist" style="margin-top: 8px;">
+                            {% for error in form.evidence_file.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+
+                        {% if form.evidence_file.help_text %}
+                        <div class="help-text">
+                            <i class="fas fa-question-circle"></i>
+                            {{ form.evidence_file.help_text }}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-rocket"></i> Run Investigation
+                    </button>
+                    <button type="reset" class="btn-reset" onclick="resetUploadUI()">
+                        <i class="fas fa-redo"></i> Reset Form
+                    </button>
+                </div>
+            </form>
+
+            <!-- Help Section -->
+            <div class="alert-box alert-warning" style="margin-top: 30px;">
+                <strong><i class="fas fa-exclamation-triangle"></i> Important Notes:</strong>
+                <ul style="margin: 10px 0 0 20px;">
+                    <li>Fields marked with <span class="required-mark">*</span> are required</li>
+                    <li>Use comma-separated values for multiple team members and tools</li>
+                    <li>Investigation may take 30-60 seconds to complete</li>
+                    <li>Do not refresh the page during investigation</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Loading Overlay -->
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-content">
+        <div class="spinner"></div>
+        <h4>Running Investigation...</h4>
+        <p>Please wait while we process your forensic investigation.</p>
+        <p style="color: #6c757d; font-size: 0.9em;">This may take 30-60 seconds</p>
+    </div>
+</div>
+
+<script>
+// ── File upload UI ──────────────────────────────────────────────────────────
+(function () {
+    const input   = document.getElementById('{{ form.evidence_file.id_for_label }}');
+    const preview = document.getElementById('file-preview');
+    const nameEl  = document.getElementById('file-preview-name');
+    const sizeEl  = document.getElementById('file-preview-size');
+    const wrapper = document.getElementById('uploadWrapper');
+
+    if (!input) return;
+
+    function showPreview(file) {
+        nameEl.textContent = file.name;
+        sizeEl.textContent = '(' + (file.size / 1024).toFixed(1) + ' KB)';
+        preview.style.display = 'block';
+        wrapper.style.borderColor = '#28a745';
+    }
+
+    function clearPreview() {
+        preview.style.display = 'none';
+        wrapper.style.borderColor = '#6c757d';
+    }
+
+    input.addEventListener('change', function () {
+        if (this.files && this.files.length > 0) {
+            showPreview(this.files[0]);
+        } else {
+            clearPreview();
+        }
+    });
+
+    // Drag-and-drop support
+    wrapper.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        this.style.borderColor = '#007bff';
+    });
+    wrapper.addEventListener('dragleave', function () {
+        this.style.borderColor = (input.files && input.files.length) ? '#28a745' : '#6c757d';
+    });
+    wrapper.addEventListener('drop', function (e) {
+        e.preventDefault();
+        if (e.dataTransfer.files && e.dataTransfer.files.length) {
+            input.files = e.dataTransfer.files;
+            input.dispatchEvent(new Event('change'));
+        }
+    });
+})();
+
+// Reset upload UI when reset button is clicked
+function resetUploadUI() {
+    document.getElementById('file-preview').style.display = 'none';
+    document.getElementById('uploadWrapper').style.borderColor = '#6c757d';
+}
+
+// ── Show loading overlay on form submit ─────────────────────────────────────
+document.getElementById('investigationForm').addEventListener('submit', function (e) {
+    let isValid = true;
+    const inputs = this.querySelectorAll('input[required], textarea[required], select[required]');
+
+    inputs.forEach(function (input) {
+        if (!input.value.trim()) {
+            isValid = false;
+            input.style.borderColor = '#dc3545';
+        } else {
+            input.style.borderColor = '#dee2e6';
+        }
+    });
+
+    if (!isValid) {
+        e.preventDefault();
+        alert('Please fill in all required fields (marked with *)');
+        return;
+    }
+
+    // Show loading overlay and disable submit button
+    document.getElementById('loadingOverlay').style.display = 'flex';
+    const submitBtn = this.querySelector('.btn-submit');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+});
+
+// ── Remove error styling on input ───────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function () {
+    const inputs = document.querySelectorAll('#investigationForm input[required], #investigationForm textarea[required], #investigationForm select[required]');
+    inputs.forEach(function (input) {
+        input.addEventListener('input', function () {
+            if (this.value.trim()) {
+                this.style.borderColor = '#28a745';
+            }
+        });
+    });
+});
+</script>
+
+{% endblock %}

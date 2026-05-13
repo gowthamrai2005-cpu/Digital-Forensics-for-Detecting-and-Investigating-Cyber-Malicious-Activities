@@ -1,0 +1,31 @@
+=== COMPUTER FORENSIC LOG — SET 4: Credential Harvesting & Mimikatz ===
+[2026-03-19 11:00:05] ALERT: Mimikatz execution detected on workstation LAPTOP-EXEC-003 — sekurlsa module
+[2026-03-19 11:00:50] CRITICAL: lsass.exe process memory read by mimikatz — credential dump in progress
+[2026-03-19 11:01:35] WARNING: 23 NTLM password hashes extracted from LSASS memory
+[2026-03-19 11:02:20] ALERT: 7 plaintext passwords recovered — Windows credential caching vulnerability
+[2026-03-19 11:03:05] CRITICAL: Domain admin account 'corp\administrator' plaintext password extracted: 'Admin2024!'
+[2026-03-19 11:03:50] WARNING: Kerberos tickets extracted — Golden Ticket attack possible with krbtgt hash
+[2026-03-19 11:04:35] ALERT: krbtgt account NTLM hash extracted — unlimited Kerberos impersonation possible
+[2026-03-19 11:05:20] CRITICAL: Golden Ticket created — valid for 10 years — persists across password changes
+[2026-03-19 11:06:05] WARNING: Pass-the-Hash attack against DC01 using extracted domain admin hash
+[2026-03-19 11:06:50] ALERT: DCSync attack performed — full Active Directory database replicated to attacker
+[2026-03-19 11:07:35] CRITICAL: 1,247 user account hashes extracted via DCSync — full domain compromise
+[2026-03-19 11:08:20] WARNING: Hashcat offline cracking started — GPU cluster at 14 billion hashes/second
+[2026-03-19 11:09:05] ALERT: 847 of 1,247 hashes cracked within 4 hours — weak passwords confirmed
+[2026-03-19 11:09:50] CRITICAL: Service account 'svc_backup' password cracked: 'backup123' — has DA privileges
+[2026-03-19 11:10:35] WARNING: Lateral movement to 47 servers using cracked service account credentials
+[2026-03-19 11:11:20] ALERT: Mimikatz 'lsadump::dcsync' left artifact in event log ID 4662 — detectable
+[2026-03-19 11:12:05] CRITICAL: SQL Server sa account credentials extracted — all databases accessible
+[2026-03-19 11:12:50] WARNING: Certificate Authority private key extracted — PKI entirely compromised
+[2026-03-19 11:13:35] ALERT: Forged code signing certificates generated using stolen CA private key
+[2026-03-19 11:14:20] CRITICAL: Malware signed with legitimate corporate CA — trusted by all security tools
+[2026-03-19 11:15:05] WARNING: Mimikatz binary: SHA256=fc780db27e17d81c5061a0c1e2f2dd89e5cb35d5e2e4fcf6f2e6b5b5b5b5b5b
+[2026-03-19 11:15:50] ALERT: Initial compromise vector — spear phishing email to LAPTOP-EXEC-003 user
+[2026-03-19 11:16:35] CRITICAL: Phishing email contained weaponized Word doc — CVE-2022-30190 (Follina) exploit
+[2026-03-19 11:17:20] WARNING: Follina exploit spawned mshta.exe — downloaded Mimikatz from pastebin.com
+[2026-03-19 11:18:05] ALERT: Forest-wide krbtgt reset initiated — Golden Ticket invalidated
+[2026-03-19 11:18:50] CRITICAL: All 1,247 user accounts forced to reset passwords immediately
+[2026-03-19 11:19:35] WARNING: Certificate Authority rebuilt from scratch — all certificates reissued
+[2026-03-19 11:20:20] ALERT: Privileged Access Workstations (PAW) deployed — domain admins isolated
+[2026-03-19 11:21:05] CRITICAL: Credential Guard and Protected Users group enabled — LSASS hardened
+[2026-03-19 11:21:50] WARNING: EDR rules updated — Mimikatz variants blocked across all 1,400 endpoints

@@ -1,0 +1,30 @@
+=== MOBILE DEVICE FORENSIC LOG — SET 1: Android Stalkerware / Spyware ===
+[2026-03-10 07:30:05] ALERT: Device Samsung Galaxy S23 (IMEI: 358240051234567) — suspicious app 'System Update Service' detected
+[2026-03-10 07:30:50] CRITICAL: App 'System Update Service' requests 47 permissions including location, microphone, camera, contacts
+[2026-03-10 07:31:35] WARNING: App not found in Google Play Store — sideloaded APK from unknown source
+[2026-03-10 07:32:20] ALERT: APK signature: SHA256=c3d4e5f6a7b890123456789abcdef0123456789abcdef0123456789abcdef1234
+[2026-03-10 07:33:05] CRITICAL: App transmitting GPS coordinates every 30 seconds to 185.234.219.30
+[2026-03-10 07:33:50] WARNING: Microphone activated silently — audio stream sent to 185.234.219.30:8443
+[2026-03-10 07:34:35] ALERT: All SMS messages forwarded to attacker email: spy@protonmail.com
+[2026-03-10 07:35:20] CRITICAL: Call recordings uploaded automatically to cloud server 185.234.219.30
+[2026-03-10 07:36:05] WARNING: Browser history and saved passwords extracted from Chrome profile
+[2026-03-10 07:36:50] ALERT: WhatsApp message database 'msgstore.db' copied and uploaded
+[2026-03-10 07:37:35] CRITICAL: Device camera activated remotely — front camera photos taken every 5 minutes
+[2026-03-10 07:38:20] WARNING: Keylogger active — every keystroke logged and transmitted
+[2026-03-10 07:39:05] ALERT: Device rooted via CVE-2023-21036 — system-level access achieved
+[2026-03-10 07:39:50] CRITICAL: Google account credentials extracted from device keystore
+[2026-03-10 07:40:35] WARNING: Banking app 'Chase Mobile' transaction data exfiltrated — 90 days of history
+[2026-03-10 07:41:20] ALERT: Contact list (847 contacts) uploaded to attacker server
+[2026-03-10 07:42:05] CRITICAL: Email app credentials harvested — victim's corporate email compromised
+[2026-03-10 07:42:50] WARNING: App hiding itself from launcher and app drawer — victim unaware of infection
+[2026-03-10 07:43:35] ALERT: App persists across factory reset via hidden partition — advanced threat
+[2026-03-10 07:44:20] CRITICAL: Spyware active for estimated 47 days before detection
+[2026-03-10 07:45:05] WARNING: Investigation reveals device physically handled by suspect for 2 minutes 47 days ago
+[2026-03-10 07:45:50] ALERT: USB debugging was enabled — malicious APK installed via ADB
+[2026-03-10 07:46:35] CRITICAL: Commercial stalkerware product identified as 'FlexiSPY' — sold for domestic abuse
+[2026-03-10 07:47:20] WARNING: Law enforcement subpoena issued for FlexiSPY account records
+[2026-03-10 07:48:05] ALERT: Device seized as evidence — full physical extraction performed
+[2026-03-10 07:48:50] CRITICAL: 14 GB of intercepted private data recovered — victim impact assessment started
+[2026-03-10 07:49:35] WARNING: Victim support services notified — VAWA digital safety protections applied
+[2026-03-10 07:50:20] ALERT: Second device (iPad) belonging to victim also found to be compromised
+[2026-03-10 07:51:05] CRITICAL: Full forensic report delivered to prosecutors — 7 criminal charges identified

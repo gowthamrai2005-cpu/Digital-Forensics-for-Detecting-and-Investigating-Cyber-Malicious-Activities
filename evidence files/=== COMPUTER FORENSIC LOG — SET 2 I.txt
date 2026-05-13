@@ -1,0 +1,29 @@
+=== COMPUTER FORENSIC LOG — SET 2: Insider Threat — USB Data Theft ===
+[2026-03-13 17:30:05] ALERT: USB storage device inserted on workstation DESKTOP-FIN-07 by user 'mwilson'
+[2026-03-13 17:30:50] WARNING: USB device ID: VID_0781&PID_5581 (SanDisk Ultra 256GB) — not on approved list
+[2026-03-13 17:31:35] ALERT: DLP alert triggered — bulk file copy operation to removable media detected
+[2026-03-13 17:32:20] CRITICAL: 14,000 files copied in 8 minutes — 23 GB total data transferred
+[2026-03-13 17:33:05] WARNING: Files copied include: Q1_2026_financials.xlsx, merger_targets_confidential.pdf
+[2026-03-13 17:33:50] ALERT: strategy_board_presentation_april.pptx copied — board-level confidential
+[2026-03-13 17:34:35] CRITICAL: HR records for all 2,400 employees copied — GDPR data protection violation
+[2026-03-13 17:35:20] WARNING: customer_database_full_2026.sql copied — 847,000 customer records
+[2026-03-13 17:36:05] ALERT: Intellectual property: source_code_v4.2.zip copied — 3 years of development
+[2026-03-13 17:36:50] CRITICAL: User 'mwilson' submitted resignation 3 days ago — effective in 2 weeks
+[2026-03-13 17:37:35] WARNING: 'mwilson' accessed files outside normal working hours — 11 PM to 2 AM last 5 days
+[2026-03-13 17:38:20] ALERT: Email analysis — 'mwilson' sent 47 emails to personal Gmail in last 2 weeks
+[2026-03-13 17:39:05] CRITICAL: Gmail attachment review reveals company files sent externally — policy violation
+[2026-03-13 17:39:50] WARNING: 'mwilson' interviewed competitor on LinkedIn 30 days ago — direct competitor
+[2026-03-13 17:40:35] ALERT: Badge access logs — 'mwilson' accessed server room twice without authorization
+[2026-03-13 17:41:20] CRITICAL: Second USB device used in server room — network equipment configuration copied
+[2026-03-13 17:42:05] WARNING: CCTV footage confirms USB insertion events match DLP alerts
+[2026-03-13 17:42:50] ALERT: Legal hold placed on 'mwilson' workstation, email, and all access logs
+[2026-03-13 17:43:35] CRITICAL: Forensic image of workstation DESKTOP-FIN-07 created — chain of custody preserved
+[2026-03-13 17:44:20] WARNING: USB device not recovered — 'mwilson' left building 20 minutes after final copy
+[2026-03-13 17:45:05] ALERT: Law enforcement contacted — trade secret theft charges under EEA applicable
+[2026-03-13 17:45:50] CRITICAL: Civil litigation hold issued — TRO (temporary restraining order) sought
+[2026-03-13 17:46:35] WARNING: Competitor's IT systems subpoenaed for receipt of stolen files
+[2026-03-13 17:47:20] ALERT: 'mwilson' system access immediately revoked — security escort to exit
+[2026-03-13 17:48:05] CRITICAL: Forensic investigation confirmed 23 GB exfiltration — IP damages estimated $8.4M
+[2026-03-13 17:48:50] WARNING: DLP policy updated — USB storage blocked for all non-executive users
+[2026-03-13 17:49:35] ALERT: Insider threat program enhanced — behavioral analytics deployed across all 2,400 users
+

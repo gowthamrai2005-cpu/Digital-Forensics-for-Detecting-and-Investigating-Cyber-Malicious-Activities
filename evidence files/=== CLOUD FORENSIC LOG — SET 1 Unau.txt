@@ -1,0 +1,31 @@
+=== CLOUD FORENSIC LOG — SET 1: Unauthorized IAM Access & Privilege Escalation ===
+[2026-03-10 08:12:03] CRITICAL: Root account login from unrecognized IP 91.108.4.10 — MFA bypassed
+[2026-03-10 08:12:45] ALERT: IAM policy modified — AttachRolePolicy added to user 'dev_jenkins'
+[2026-03-10 08:13:22] ALERT: New admin role 'shadow_admin' created by user 'dev_jenkins'
+[2026-03-10 08:14:05] CRITICAL: Privilege escalation detected — 'dev_jenkins' assumed 'shadow_admin' role
+[2026-03-10 08:14:50] WARNING: CloudTrail logging disabled by 'shadow_admin' in region us-east-1
+[2026-03-10 08:15:30] CRITICAL: S3 bucket policy updated — public read access enabled on 'prod-backup-2026'
+[2026-03-10 08:16:10] ALERT: 47 IAM users enumerated via ListUsers API call from IP 91.108.4.10
+[2026-03-10 08:16:55] ALERT: GetSecretValue called on 12 Secrets Manager entries in 30 seconds
+[2026-03-10 08:17:30] CRITICAL: RDS snapshot 'prod-db-snap-2026' copied to external AWS account 998877665544
+[2026-03-10 08:18:15] WARNING: EC2 security group modified — port 22 opened to 0.0.0.0/0
+[2026-03-10 08:19:00] ALERT: New EC2 key pair 'backdoor_key' created by 'shadow_admin'
+[2026-03-10 08:19:45] CRITICAL: Lambda function 'billing_processor' source code modified
+[2026-03-10 08:20:30] WARNING: CloudWatch alarm thresholds raised to suppress detection alerts
+[2026-03-10 08:21:10] ALERT: Route53 DNS record for 'internal-api.corp.com' modified to 185.220.101.5
+[2026-03-10 08:22:00] CRITICAL: KMS encryption key 'prod-master-key' scheduled for deletion in 7 days
+[2026-03-10 08:22:45] ALERT: 230 GB data transferred from S3 'prod-backup-2026' to external IP 91.108.4.10
+[2026-03-10 08:23:30] WARNING: GuardDuty detector disabled in region us-west-2
+[2026-03-10 08:24:15] ALERT: New IAM access key created for user 'billing_svc' — no MFA enforced
+[2026-03-10 08:25:00] CRITICAL: ECS task definition updated — malicious container image 'evil/miner:latest' injected
+[2026-03-10 08:25:45] ALERT: SQS queue 'payment-events' permissions modified — external principal granted access
+[2026-03-10 08:26:30] WARNING: Config rule 'restricted-ssh' disabled by 'shadow_admin'
+[2026-03-10 08:27:10] CRITICAL: VPC flow logs disabled in all regions by API call from 91.108.4.10
+[2026-03-10 08:27:55] ALERT: SNS topic 'security-alerts' subscription deleted — notifications suppressed
+[2026-03-10 08:28:40] CRITICAL: IAM role 'shadow_admin' assigned to 6 additional EC2 instances
+[2026-03-10 08:29:20] WARNING: CloudFormation stack 'prod-infra' delete initiated — 34 resources at risk
+[2026-03-10 08:30:05] ALERT: Outbound connection from EC2 i-0abc123 to C2 server 185.220.101.5:8443 established
+[2026-03-10 08:30:50] CRITICAL: Database credentials for 'prod-mysql' exfiltrated via Lambda environment variable leak
+[2026-03-10 08:31:35] ALERT: Elastic Load Balancer access logs deleted for past 72 hours
+[2026-03-10 08:32:20] WARNING: Billing alert suppressed — AWS cost anomaly of $14,200 not notified
+[2026-03-10 08:33:05] CRITICAL: Investigation trigger — automated forensic snapshot initiated for affected resources

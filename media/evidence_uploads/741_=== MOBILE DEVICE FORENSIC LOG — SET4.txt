@@ -1,0 +1,31 @@
+=== MOBILE DEVICE FORENSIC LOG — SET 4: iOS Jailbreak & RAT Installation ===
+[2026-03-19 14:05:00] ALERT: iPhone 15 Pro (UDID: a1b2c3d4e5f67890abcdef1234567890abcdef12) — jailbreak detected
+[2026-03-19 14:05:45] CRITICAL: Checkm8 bootrom exploit used — persistent jailbreak survives factory reset
+[2026-03-19 14:06:30] WARNING: Cydia package manager installed — 14 unauthorized packages added
+[2026-03-19 14:07:15] ALERT: 'openssh' installed on device — SSH daemon listening on port 22
+[2026-03-19 14:08:00] CRITICAL: Default SSH password 'alpine' not changed — trivially accessible remotely
+[2026-03-19 14:08:45] WARNING: Remote access from 104.244.42.133 via SSH — lateral movement to device
+[2026-03-19 14:09:30] ALERT: iSpy RAT installed via Cydia — full remote access tool active
+[2026-03-19 14:10:15] CRITICAL: iCloud Keychain dumped — 847 saved passwords extracted
+[2026-03-19 14:11:00] WARNING: iMessage database (sms.db) copied — 14 months of messages exfiltrated
+[2026-03-19 14:11:45] ALERT: Contacts, call logs, and voicemails extracted to remote server
+[2026-03-19 14:12:30] CRITICAL: Email account credentials for Outlook, Gmail, and Apple Mail harvested
+[2026-03-19 14:13:15] WARNING: Face ID data cannot be extracted — hardware security enclave protected
+[2026-03-19 14:14:00] ALERT: Photos library (23 GB, 14,000 photos) being exfiltrated via encrypted channel
+[2026-03-19 14:14:45] CRITICAL: Health and fitness data extracted — Sleep, Heart Rate, Location history 2 years
+[2026-03-19 14:15:30] WARNING: Apple Pay transaction history obtained — 18 months of purchase data
+[2026-03-19 14:16:15] ALERT: Corporate MDM profile bypassed — device appeared compliant to IT systems
+[2026-03-19 14:17:00] CRITICAL: VPN configuration and corporate certificates extracted from device
+[2026-03-19 14:17:45] WARNING: Attacker used corporate VPN cert to access internal network as device owner
+[2026-03-19 14:18:30] ALERT: Internal SharePoint files accessed using stolen mobile VPN credentials
+[2026-03-19 14:19:15] CRITICAL: M&A confidential documents (Project Phoenix) downloaded — $4.2B deal at risk
+[2026-03-19 14:20:00] WARNING: Device seizure initiated — full physical iOS extraction via GrayKey device
+[2026-03-19 14:20:45] ALERT: GrayKey extraction successful — complete filesystem image obtained
+[2026-03-19 14:21:30] CRITICAL: UFED Cellebrite analysis confirms 23 days of unauthorized access
+[2026-03-19 14:22:15] WARNING: Jailbreak performed during international travel — suspect had physical device access
+[2026-03-19 14:23:00] ALERT: Airport hotel CCTV reviewed — device left unattended in room for 40 minutes
+[2026-03-19 14:23:45] CRITICAL: Insider threat assessment initiated — travel companion identified as suspect
+[2026-03-19 14:24:30] WARNING: SEC notified — potential insider trading based on M&A document access timing
+[2026-03-19 14:25:15] ALERT: All corporate certificates revoked — VPN access terminated for compromised device
+[2026-03-19 14:26:00] CRITICAL: Legal hold placed on all evidence — criminal referral to FBI prepared
+
